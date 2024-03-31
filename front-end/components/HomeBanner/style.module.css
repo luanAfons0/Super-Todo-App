@@ -11,8 +11,8 @@
   display: flex;
   width: 100%;
   justify-content: center;
-  gap: 15px;
-  height: 80%;
+  gap: 90px;
+  height: 90%;
   align-items: center;
 }
 
@@ -24,6 +24,10 @@
   padding: 15px;
   align-items: center;
   gap: 30px;
+
+  @media (max-width: 770px) {
+    font-size: 4rem;
+  }
 }
 
 .HomeBannerContainer .HomeBannerContent .LeftSide .LeftBar {
@@ -48,9 +52,10 @@
   justify-content: flex-start;
   align-items: center;
   margin-top: 40px;
-}
-.HomeBannerContainer .HomeBannerContent .RigthSide .PostIt ul:first-child {
-  justify-self: center;
+
+  @media (max-width: 1355px) {
+    display: none;
+  }
 }
 
 .HomeBannerContainer .HomeBannerContent .RigthSide .PostIt ul {

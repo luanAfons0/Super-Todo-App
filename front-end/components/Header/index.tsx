@@ -4,7 +4,9 @@ import styles from "./styles.module.css";
 export default function Header() {
   return (
     <div className={styles.HeaderContainer}>
-      <h1 className={styles.HeaderLogo}>Super Todo App</h1>
+      <h1 className={styles.HeaderLogo}>
+        <Link href={"/"}>Super Todo App</Link>
+      </h1>
 
       <div>
         <ul className={styles.HeaderContent}>
