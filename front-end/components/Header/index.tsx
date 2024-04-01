@@ -2,6 +2,8 @@ import Link from "next/link";
 import styles from "./styles.module.css";
 
 export default function Header() {
+  const mobileLines = Array.from({ length: 3 });
+
   return (
     <div className={styles.HeaderContainer}>
       <h1 className={styles.HeaderLogo}>
@@ -26,7 +28,15 @@ export default function Header() {
           <li>
             <Link href={"/log-in"}>Log-in</Link>
           </li>
+          <div></div>
         </ul>
+
+        {/* TODO mobile menu */}
+        <div className={styles.HamburgerMenu}>
+          {mobileLines.map((_: any, idx: number) => {
+            return <div key={idx} className={styles.MobileLines} />;
+          })}
+        </div>
       </div>
     </div>
   );

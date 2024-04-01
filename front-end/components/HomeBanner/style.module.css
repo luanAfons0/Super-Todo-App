@@ -5,6 +5,10 @@
   background: linear-gradient(0deg, #60e314 0%, #b6e314 100%);
   padding: 20px;
   position: relative;
+
+  @media (max-width: 550px) {
+    height: 50vh;
+  }
 }
 
 .HomeBannerContainer .HomeBannerContent {
@@ -14,6 +18,10 @@
   gap: 90px;
   height: 90%;
   align-items: center;
+
+  @media (max-width: 770px) {
+    gap: 0;
+  }
 }
 
 .HomeBannerContainer .HomeBannerContent .LeftSide {
@@ -28,6 +36,10 @@
   @media (max-width: 770px) {
     font-size: 4rem;
   }
+
+  @media (max-width: 550px) {
+    font-size: 2rem;
+  }
 }
 
 .HomeBannerContainer .HomeBannerContent .LeftSide .LeftBar {
@@ -35,6 +47,10 @@
   height: 60vh;
   background-color: #fffff0;
   border-radius: 15px;
+
+  @media (max-width: 550px) {
+    height: 30vh;
+  }
 }
 
 /* .HomeBannerContainer .HomeBannerContent .RigthSide {
