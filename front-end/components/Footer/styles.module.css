@@ -1,0 +1,28 @@
+.footer {
+  background-color: #fffff0;
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.texts p {
+  margin-top: 15px;
+}
+
+.copyright {
+  color: rgba(13, 23, 23, 0.479);
+}
+
+.icons {
+  margin: auto;
+  display: flex;
+}
+
+.icons svg {
+  width: 50px;
+  height: 50px;
+  margin: 0 15px 15px 15px;
+}

@@ -1,5 +1,5 @@
 .HeaderContainer {
-  width: 100%;
+  width: calc(100% - 40px);
   height: 10vh;
   color: #0d1717;
   background-color: #fffff0;
@@ -9,6 +9,8 @@
   justify-content: space-around;
   align-items: center;
   border-radius: 18px;
+  position: fixed;
+  box-shadow: #0d17171a 0px 0px 15px 15px;
 }
 
 .HeaderContainer .HeaderLogo {
