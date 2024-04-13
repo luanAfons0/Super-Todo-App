@@ -1,7 +1,6 @@
 .HomeBannerContainer {
   height: 100vh;
   width: 100%;
-  background: rgb(34, 193, 195);
   background: linear-gradient(0deg, #60e314 0%, #b6e314 100%);
   padding: 20px;
   position: relative;

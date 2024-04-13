@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HomeBanner from "@/components/HomeBanner";
+import PostItDemonstration from "@/components/PostItDemonstration";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
       <HomeBanner>
         <Header />
       </HomeBanner>
-      <div style={{ height: "100vh" }}></div>
+      <PostItDemonstration />
       <Footer />
     </>
   );
