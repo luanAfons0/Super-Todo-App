@@ -15,7 +15,7 @@
   width: 100%;
   justify-content: center;
   gap: 90px;
-  height: 90%;
+  height: 100%;
   align-items: center;
 
   @media (max-width: 770px) {

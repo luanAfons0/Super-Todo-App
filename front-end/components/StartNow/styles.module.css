@@ -1,0 +1,35 @@
+.container {
+  width: 100%;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.container h1 {
+  font-size: 4rem;
+  margin: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.container p {
+  font-size: 2.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+}
+
+.container button p {
+  font-size: 1.5rem;
+  padding: 0 2.5rem;
+}
+
+.container #ligthText {
+  color: rgba(13, 23, 23, 0.479);
+
+  @media (max-width: 768) {
+    /* font-size: 1rem; */
+  }
+}
