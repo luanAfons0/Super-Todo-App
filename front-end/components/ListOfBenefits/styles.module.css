@@ -1,0 +1,50 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 6rem 0;
+}
+
+.container h2 {
+  font-size: 5rem;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+}
+
+.container .ligthText {
+  color: rgba(13, 23, 23, 0.479);
+  font-size: 1.5rem;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.container .benefits {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex: 50%;
+  margin: 2.5rem;
+  gap: 4rem;
+}
+
+.container .benefits div {
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-grow: 1; */
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 1rem;
+  gap: 1rem;
+}
+
+.container .benefits div svg {
+  height: 100px;
+  margin: auto;
+}
