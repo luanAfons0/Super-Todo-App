@@ -1,43 +1,99 @@
+"use client";
 import Link from "next/link";
 import styles from "./styles.module.css";
+import { useEffect, useRef, useState } from "react";
+import { excludeIcon } from "@/public/icons";
 
 export default function Header() {
   const mobileLines = Array.from({ length: 3 });
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const mobileMenuRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (mobileMenu) {
+      document.body.classList.add(styles.MobileOpen);
+    } else {
+      document.body.classList.remove(styles.MobileOpen);
+    }
+  }, [mobileMenu]);
+
+  const handleClickOutside = (event: any) => {
+    if (
+      mobileMenuRef.current &&
+      !mobileMenuRef.current.contains(event.target)
+    ) {
+      setMobileMenu(false);
+    }
+  };
 
   return (
-    <div className={styles.HeaderContainer}>
-      <h1 className={styles.HeaderLogo}>
-        <Link href={"/"}>Super Todo App</Link>
-      </h1>
+    <>
+      <div className={styles.HeaderContainer}>
+        <h1 className={styles.HeaderLogo}>
+          <Link href={"/"}>Super Todo App</Link>
+        </h1>
 
-      <div>
-        <ul className={styles.HeaderContent}>
-          <li>
-            <Link href={"/about-us"}>About Us</Link>
-          </li>
-          <li>
-            <Link href={"/contact"}>Contact</Link>
-          </li>
-          <li>
-            <Link href={"/my-account"}>Your Account</Link>
-          </li>
-          <li>
-            <Link href={"/sign-in"}>Sign-in</Link>{" "}
-          </li>
-          |
-          <li>
-            <Link href={"/log-in"}>Log-in</Link>
-          </li>
-          <div></div>
-        </ul>
+        <div>
+          <ul className={styles.HeaderContent}>
+            <li>
+              <Link href={"/about-us"}>About Us</Link>
+            </li>
+            <li>
+              <Link href={"/contact"}>Contact</Link>
+            </li>
+            <li>
+              <Link href={"/my-account"}>Your Account</Link>
+            </li>
+            <li>
+              <Link href={"/sign-in"}>Sign-in</Link>{" "}
+            </li>
+            |
+            <li>
+              <Link href={"/log-in"}>Log-in</Link>
+            </li>
+          </ul>
 
-        {/* TODO mobile menu */}
-        <div className={styles.HamburgerMenu}>
-          {mobileLines.map((_: any, idx: number) => {
-            return <div key={idx} className={styles.MobileLines} />;
-          })}
+          <div className={styles.HamburgerMenu}>
+            {mobileLines.map((_: any, idx: number) => {
+              return (
+                <div
+                  key={idx}
+                  onClick={() => setMobileMenu(true)}
+                  className={styles.MobileLines}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
+      {mobileMenu && (
+        <div
+          className={styles.MobileContainer}
+          onClick={(e) => handleClickOutside(e)}
+        >
+          <div className={styles.MobileMenu} ref={mobileMenuRef}>
+            <ul>
+              <li>
+                <Link href={"/about-us"}>About Us</Link>
+              </li>
+              <li>
+                <Link href={"/contact"}>Contact</Link>
+              </li>
+              <li>
+                <Link href={"/my-account"}>Your Account</Link>
+              </li>
+              <li>
+                <Link href={"/sign-in"}>Sign-in</Link>{" "}
+              </li>
+              <li>
+                <Link href={"/log-in"}>Log-in</Link>
+              </li>
+            </ul>
+
+            <div onClick={() => setMobileMenu(false)}>{excludeIcon}</div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
