@@ -1,14 +1,13 @@
 import styles from "./style.module.css";
 
 export default function HomeBanner({ children }: any) {
-  const lines = Array.from({ length: 8 });
+  const lines = Array.from({ length: 9 });
 
   return (
     <div className={styles.HomeBannerContainer}>
       {children}
       <div className={styles.HomeBannerContent}>
         <div className={styles.LeftSide}>
-          <div className={styles.LeftBar} />
           The right way <br /> to organize <br /> yourself!!!
         </div>
         <div className={styles.RigthSide}>

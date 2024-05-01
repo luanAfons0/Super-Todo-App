@@ -1,7 +1,13 @@
 .HomeBannerContainer {
   height: 100vh;
   width: 100%;
-  background: linear-gradient(0deg, #60e314 0%, #b6e314 100%);
+  background: linear-gradient(
+    #a6f81e 0%,
+    #7cf62c 25%,
+    #3cf23c 50%,
+    #00ee4d 75%,
+    #00ea60 100%
+  );
   padding: 20px;
   position: relative;
 
@@ -41,21 +47,6 @@
   }
 }
 
-.HomeBannerContainer .HomeBannerContent .LeftSide .LeftBar {
-  width: 15px;
-  height: 60vh;
-  background-color: #fffff0;
-  border-radius: 15px;
-
-  @media (max-width: 550px) {
-    height: 30vh;
-  }
-}
-
-/* .HomeBannerContainer .HomeBannerContent .RigthSide {
-  display: flex;
-} */
-
 .HomeBannerContainer .HomeBannerContent .RigthSide .PostIt {
   width: 500px;
   height: 600px;
@@ -65,7 +56,8 @@
   display: flex;
   padding-left: 45px;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-end;
+  padding-bottom: 45px;
   margin-top: 40px;
 
   @media (max-width: 1355px) {
@@ -76,7 +68,7 @@
 .HomeBannerContainer .HomeBannerContent .RigthSide .PostIt ul {
   display: flex;
   flex-direction: column;
-  gap: 45px;
+  gap: 40px;
   list-style: none;
 }
 
