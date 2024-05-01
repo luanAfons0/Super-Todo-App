@@ -27,7 +27,7 @@
 }
 
 .container #ligthText {
-  color: rgba(13, 23, 23, 0.479);
+  color: #646f79;
 
   @media (max-width: 768) {
     /* font-size: 1rem; */
