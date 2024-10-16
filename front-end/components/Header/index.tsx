@@ -49,7 +49,7 @@ export default function Header() {
             </li>
             |
             <li>
-              <Link href={"/log-in"}>Log-in</Link>
+              <Link href={"/login"}>login</Link>
             </li>
           </ul>
 
@@ -86,7 +86,7 @@ export default function Header() {
                 <Link href={"/sign-in"}>Sign-in</Link>{" "}
               </li>
               <li>
-                <Link href={"/log-in"}>Log-in</Link>
+                <Link href={"/login"}>login</Link>
               </li>
             </ul>
 

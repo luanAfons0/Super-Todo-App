@@ -10,7 +10,7 @@ export default function StartNow() {
         Say goodbye to sticky notes and hello <br />
         to your new to-do list app.
       </p>
-      <a href="/log-in">
+      <a href="/login">
         <Button buttonText="Start now" />
       </a>
     </div>
