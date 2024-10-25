@@ -1,0 +1,19 @@
+.container {
+  height: fit-content;
+  border-radius: 12px;
+  padding: 1rem;
+  background-color: #fffff0;
+  box-shadow: #0d17171a 0px 0px 15px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+}

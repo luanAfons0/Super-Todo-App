@@ -89,3 +89,27 @@ export const excludeIcon = (
     <path d="M46 1.6c-14 3-27.1 12.1-35.7 24.6C-1.8 44-3.1 66.1 6.7 86c3.5 7.2 7.1 11 84.7 88.7l81.1 81.3-81.1 81.2C13.8 415 10.2 418.8 6.7 426c-13.5 27.4-5.4 58.7 19.5 75.7 17.8 12.1 39.9 13.4 59.8 3.6 7.2-3.5 11-7.1 88.8-84.7l81.2-81.1 81.3 81.1c77.7 77.6 81.5 81.2 88.7 84.7 19.6 9.7 41.7 8.5 59.4-3.3 25.3-17 33.5-48.4 19.9-76-3.5-7.2-7.1-11-84.7-88.8L339.5 256l81.1-81.3C498.2 97 501.8 93.2 505.3 86c13.5-27.4 5.4-58.7-19.5-75.7C468-1.7 446.1-3.1 426 6.6c-7.2 3.5-10.5 6.6-88.7 84.8L256 172.5l-81.2-81.1C97 13.8 93.2 10.2 86 6.7 73.2.4 59.6-1.4 46 1.6" />
   </svg>
 );
+
+export const userIcon = (
+  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g strokeWidth="0" />
+    <g strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M8 7a3 3 0 1 0 0-6 3 3 0 0 0 0 6m6 5a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v3h12z"
+      fill="#000"
+    />
+  </svg>
+);
+
+export const lockIcon = (
+  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g strokeWidth="0" />
+    <g strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M4 6V4a4 4 0 1 1 8 0v2h2v10H2V6zm2-2a2 2 0 1 1 4 0v2H6zm1 9V9h2v4z"
+      fill="#000"
+    />
+  </svg>
+);
