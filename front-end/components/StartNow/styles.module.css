@@ -27,9 +27,5 @@
 }
 
 .container #ligthText {
-  color: #646f79;
-
-  @media (max-width: 768) {
-    /* font-size: 1rem; */
-  }
+  color: var(--nickel);
 }

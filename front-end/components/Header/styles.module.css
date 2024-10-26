@@ -10,8 +10,8 @@
 .HeaderContainer {
   width: calc(100% - 40px);
   height: 10vh;
-  color: #0d1717;
-  background-color: #fffff0;
+  color: var(--chinese-black);
+  background-color: var(--ivory);
   padding: 0 20px;
   position: relative;
   display: flex;
@@ -19,12 +19,14 @@
   align-items: center;
   border-radius: 18px;
   position: fixed;
-  box-shadow: #0d17171a 0px 0px 15px 15px;
+  box-shadow: var(--very-ligh-chinese-black) 0px 0px 15px 15px;
 }
 
 .HeaderContainer .HeaderLogo {
   font-style: italic;
   transition: 0.5s;
+  display: flex;
+
   @media (max-width: 550px) {
     font-size: 20px;
   }
@@ -36,7 +38,7 @@
 
 .HeaderContainer .HeaderLogo a {
   text-decoration: none;
-  color: #0d1717;
+  color: var(--chinese-black);
 }
 
 .HeaderContainer .HeaderContent {
@@ -60,7 +62,7 @@
 
 .HeaderContainer .HeaderContent a {
   text-decoration: none;
-  color: #0d1717;
+  color: var(--chinese-black);
 }
 .HeaderContainer .HeaderContent a:hover {
   animation: textHover;
@@ -75,7 +77,7 @@
   height: 40px;
   width: 40px;
   border-radius: 5px;
-  border: #0d1717 solid 2px;
+  border: var(--chinese-black) solid 2px;
 
   @media (max-width: 870px) {
     display: flex;
@@ -86,7 +88,7 @@
   height: 3px;
   border-radius: 5px;
   width: 30px;
-  background-color: #0d1717;
+  background-color: var(--chinese-black);
 }
 
 .MobileContainer {
@@ -96,7 +98,7 @@
   bottom: 0;
   left: 0;
   margin: 0;
-  background-color: #0d171780;
+  background-color: var(--ligh-chinese-black);
   display: flex;
   padding: 0;
 }
@@ -106,9 +108,9 @@
   animation-name: MobileMenuAnimation;
   width: 100vw;
   height: 50vh;
-  background-color: #fffff0;
+  background-color: var(--ivory);
   position: fixed;
-  border-bottom: 0.1rem #0d1717 solid;
+  border-bottom: 0.1rem var(--chinese-black) solid;
 }
 
 .MobileMenu svg {
@@ -130,7 +132,7 @@
 
 .MobileMenu a {
   text-decoration: none;
-  color: #0d1717;
+  color: var(--chinese-black);
   font-size: 2rem;
 }
 

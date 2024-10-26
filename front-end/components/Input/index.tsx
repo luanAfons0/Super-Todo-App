@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import styles from "./styles.module.css";
 
 type InputProps = {
-  type: "number" | "text";
+  type: "number" | "text" | "password";
   value: string;
   setValue: Function;
   startIcon?: ReactNode;

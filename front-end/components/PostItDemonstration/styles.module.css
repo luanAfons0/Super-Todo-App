@@ -27,7 +27,7 @@
 .PostIt {
   width: 250px;
   height: 300px;
-  border: solid #0d171775 5px;
+  border: solid var(--ligh-chinese-black) 5px;
   border-radius: 8px;
   display: flex;
   padding-left: 25px;
@@ -47,5 +47,5 @@
   width: 200px;
   height: 10px;
   border-radius: 5px;
-  background-color: #0d171775;
+  background-color: var(--ligh-chinese-black);
 }

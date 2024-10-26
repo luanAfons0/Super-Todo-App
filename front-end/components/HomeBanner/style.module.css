@@ -2,11 +2,11 @@
   height: 100vh;
   width: 100%;
   background: linear-gradient(
-    #a6f81e 0%,
-    #7cf62c 25%,
-    #3cf23c 50%,
-    #00ee4d 75%,
-    #00ea60 100%
+    var(--green-yellow) 0%,
+    var(--spring-frost) 25%,
+    var(--lime-green) 50%,
+    var(--malachite) 75%,
+    var(--dark-springfrost) 100%
   );
   padding: 20px;
   position: relative;
@@ -32,16 +32,12 @@
 
 .HomeBannerContainer .HomeBannerContent .LeftSide {
   display: flex;
-  color: #fffff0;
+  color: var(--ivory);
   font-size: 7rem;
   border-radius: 5px;
   padding: 15px;
   align-items: center;
   gap: 30px;
-
-  /* @media (max-width: 770px) {
-    font-size: 4rem;
-  } */
 
   @media (max-width: 550px) {
     font-size: 2.5rem;
@@ -52,8 +48,8 @@
 .HomeBannerContainer .HomeBannerContent .RigthSide .PostIt {
   width: 500px;
   height: 600px;
-  background-color: #eee30c;
-  border: solid #0d171775 5px;
+  background-color:var(--titanium-yellow) ;
+  border: solid var(--ligh-chinese-black) 5px;
   border-radius: 8px;
   display: flex;
   padding-left: 45px;
@@ -78,5 +74,5 @@
   width: 400px;
   height: 10px;
   border-radius: 5px;
-  background-color: #0d171775;
+  background-color: var(--ligh-chinese-black);
 }

@@ -1,5 +1,5 @@
 .footer {
-  background-color: #fffff0;
+  background-color: var(--ivory);
   width: 100%;
   padding: 30px;
   display: flex;
@@ -14,7 +14,7 @@
 }
 
 .copyright {
-  color: rgba(13, 23, 23, 0.479);
+  color: var(--very-ligh-chinese-black);
 }
 
 .icons {

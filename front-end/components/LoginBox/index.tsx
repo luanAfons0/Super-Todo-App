@@ -30,7 +30,7 @@ export default function LoginBox() {
         </div>
         <div className={styles.row}>
           <Input
-            type="text"
+            type="password"
             value={password}
             setValue={setPassword}
             startIcon={lockIcon}

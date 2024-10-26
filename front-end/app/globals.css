@@ -10,9 +10,24 @@
   font-style: normal;
 }
 
+:root {
+  --ivory: #fffff0;
+  --nickel: #646f79;
+  --chinese-black: #0d1717;
+  --ligh-chinese-black: #0d171775;
+  --very-ligh-chinese-black: :#0d17177a;
+
+  --malachite: #00EE4D;
+  --lime-green: #3CF23C;
+  --green-yellow: #A6F81E;
+  --spring-frost: #7CF62C;
+  --titanium-yellow: #eee30c;
+  --dark-springfrost: #00ea60;
+}
+
 a {
   text-decoration: none;
-  color: #00ee4d;
+  color: var(--malachite);
   text-decoration: none;
   font-size: 1rem;
 }

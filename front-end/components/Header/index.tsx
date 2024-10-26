@@ -45,7 +45,7 @@ export default function Header() {
               <Link href={"/my-account"}>Your Account</Link>
             </li>
             <li>
-              <Link href={"/sign-in"}>Sign-in</Link>{" "}
+              <Link href={"/new-account"}>Sign in</Link>{" "}
             </li>
             |
             <li>
@@ -83,7 +83,7 @@ export default function Header() {
                 <Link href={"/my-account"}>Your Account</Link>
               </li>
               <li>
-                <Link href={"/sign-in"}>Sign-in</Link>{" "}
+                <Link href={"/new-account"}>Sign-in</Link>{" "}
               </li>
               <li>
                 <Link href={"/login"}>login</Link>

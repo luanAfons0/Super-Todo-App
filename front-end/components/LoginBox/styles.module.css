@@ -2,8 +2,8 @@
   height: fit-content;
   border-radius: 12px;
   padding: 1rem;
-  background-color: #fffff0;
-  box-shadow: #0d17171a 0px 0px 15px 15px;
+  background-color: var(--ivory);
+  box-shadow: var(--very-ligh-chinese-black) 0px 0px 15px 15px;
   display: flex;
   justify-content: center;
   align-items: center;

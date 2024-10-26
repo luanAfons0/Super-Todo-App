@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  border: 1px solid #0d1717;
+  border: 1px solid var(--chinese-black);
   border-radius: 8px;
   height: 3rem;
 }
@@ -25,8 +25,8 @@
   justify-content: center;
   align-items: center;
   width: 60px;
-  border-right: 1px solid #0d1717;
-  background-color: #3cf23c;
+  border-right: 1px solid var(--chinese-black);
+  background-color: var(--lime-green);
   border-radius: 8px 0 0 8px;
 }
 
