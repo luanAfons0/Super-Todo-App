@@ -1,4 +1,4 @@
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import LoginBox from "@/components/LoginBox";
 
 export default function LoginPage() {

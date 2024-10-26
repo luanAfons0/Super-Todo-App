@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import { useEffect, useRef, useState } from "react";
 import { excludeIcon } from "@/public/icons";
 

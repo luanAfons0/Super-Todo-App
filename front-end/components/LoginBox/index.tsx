@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Button from "../Button";
 import Input from "../Input";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import { userIcon, lockIcon } from "@/public/icons";
 
 export default function LoginBox() {

@@ -20,52 +20,53 @@
   border-radius: 18px;
   position: fixed;
   box-shadow: var(--very-ligh-chinese-black) 0px 0px 15px 15px;
-}
 
-.HeaderContainer .HeaderLogo {
-  font-style: italic;
-  transition: 0.5s;
-  display: flex;
+  .HeaderLogo {
+    font-style: italic;
+    transition: 0.5s;
+    display: flex;
 
-  @media (max-width: 550px) {
-    font-size: 20px;
+    @media (max-width: 550px) {
+      font-size: 20px;
+    }
+
+    &:hover {
+      scale: 1.2;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--chinese-black);
+    }
   }
-}
 
-.HeaderContainer .HeaderLogo:hover {
-  scale: 1.2;
-}
+  .HeaderContent {
+    list-style: none;
+    display: flex;
+    gap: 25px;
 
-.HeaderContainer .HeaderLogo a {
-  text-decoration: none;
-  color: var(--chinese-black);
-}
+    @media (max-width: 870px) {
+      display: none;
+    }
 
-.HeaderContainer .HeaderContent {
-  list-style: none;
-  display: flex;
-  gap: 25px;
+    li:hover {
+      transition: 0.5s;
+      scale: 1.3;
+    }
 
-  @media (max-width: 870px) {
-    display: none;
+    span {
+      display: flex;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--chinese-black);
+
+      &:hover {
+        animation: textHover;
+      }
+    }
   }
-}
-
-.HeaderContainer .HeaderContent li:hover {
-  transition: 0.5s;
-  scale: 1.3;
-}
-
-.HeaderContainer .HeaderContent span {
-  display: flex;
-}
-
-.HeaderContainer .HeaderContent a {
-  text-decoration: none;
-  color: var(--chinese-black);
-}
-.HeaderContainer .HeaderContent a:hover {
-  animation: textHover;
 }
 
 .HamburgerMenu {
@@ -82,13 +83,13 @@
   @media (max-width: 870px) {
     display: flex;
   }
-}
 
-.HamburgerMenu .MobileLines {
-  height: 3px;
-  border-radius: 5px;
-  width: 30px;
-  background-color: var(--chinese-black);
+  .MobileLines {
+    height: 3px;
+    border-radius: 5px;
+    width: 30px;
+    background-color: var(--chinese-black);
+  }
 }
 
 .MobileContainer {

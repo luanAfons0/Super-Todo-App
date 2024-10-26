@@ -1,6 +1,5 @@
 import Button from "../Button";
-import styles from "./styles.module.css";
-import { useRouter } from "next/router";
+import styles from "./styles.module.scss";
 
 export default function StartNow() {
   return (

@@ -1,4 +1,4 @@
-import styles from "./style.module.css";
+import styles from "./style.module.scss";
 
 export default function HomeBanner({ children }: any) {
   const lines = Array.from({ length: 9 });
