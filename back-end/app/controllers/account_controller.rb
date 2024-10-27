@@ -8,6 +8,10 @@ class AccountController < ApplicationController
         end
     end
 
+    def index
+        render json: { accounts: Account.all.map(&:as_json) }
+    end
+
     private
 
     def user_params
