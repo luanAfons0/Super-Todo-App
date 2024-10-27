@@ -21,6 +21,7 @@ export default function LoginBox() {
           <h1>Welcome back!</h1>
         </div>
         <div className={styles.row}>
+          <label>Email:</label>
           <Input
             type="text"
             value={email}
@@ -29,6 +30,7 @@ export default function LoginBox() {
           />
         </div>
         <div className={styles.row}>
+          <label>Password:</label>
           <Input
             type="password"
             value={password}
@@ -43,7 +45,7 @@ export default function LoginBox() {
             customStyle={{ margin: "0" }}
             buttonText="Login"
           />
-          <div>
+          <div style={{ marginTop: "1rem" }}>
             Not a member? <a href="/new-account">Register now</a>
           </div>
         </div>
