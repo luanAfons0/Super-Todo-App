@@ -1,6 +1,7 @@
 class AccountController < ApplicationController
     def create
-        @account = Account.create(user_params)
+        puts account_params
+        @account = Account.create(account_params)
         if @account.save
             render json: @account.as_json
         else
@@ -14,7 +15,7 @@ class AccountController < ApplicationController
 
     private
 
-    def user_params
-        params.require(:user).permit(:email, :password, :first_name, :last_name)
+    def account_params
+        params.permit(:email, :password, :first_name, :last_name)
     end
 end
