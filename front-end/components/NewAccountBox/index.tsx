@@ -6,18 +6,38 @@ import Input from "../Input";
 import styles from "./styles.module.scss";
 import { userIcon, lockIcon } from "@/public/icons";
 
-export default function LoginBox() {
+export default function NewAccountBox() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const basicValidation = () => {
-    window.alert("Login!");
+    window.alert("Signup!");
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.row}>
-        <h1>Welcome back!</h1>
+        <h1>Create account!</h1>
+      </div>
+      <div className={styles.row}>
+        <label>First name:</label>
+        <Input
+          type="text"
+          value={firstName}
+          setValue={setFirstName}
+          startIcon={userIcon}
+        />
+      </div>
+      <div className={styles.row}>
+        <label>Last name:</label>
+        <Input
+          type="text"
+          value={lastName}
+          setValue={setLastName}
+          startIcon={userIcon}
+        />
       </div>
       <div className={styles.row}>
         <label>Email:</label>
@@ -42,10 +62,10 @@ export default function LoginBox() {
         <Button
           onClick={basicValidation}
           customStyle={{ margin: "0" }}
-          buttonText="Login"
+          buttonText="Sign up"
         />
         <div style={{ marginTop: "1rem" }}>
-          Not a member? <a href="/new-account">Register now</a>
+          Already a member? <a href="/login">Login now</a>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 .container {
   height: fit-content;
   border-radius: 12px;
+  width: 40vw;
   padding: 1rem;
   background-color: var(--ivory);
   box-shadow: var(--very-ligh-chinese-black) 0px 0px 15px 15px;
@@ -9,14 +10,20 @@
   align-items: center;
   flex-direction: column;
 
-  .row {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 1rem;
+  h1 {
+    text-align: center;
+  }
 
-    a {
-      margin: 1rem 0 0 0;
-    }
+  .row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+
+  a {
+    margin: 1rem 0 0 0;
   }
 }
+}
+
+
