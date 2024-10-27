@@ -29,6 +29,15 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# Implement authentication with JWT(Jason Web Token)
+gem "jwt"
+
+# Allows you to generate your JSON in an object-oriented and convention-driven manner.
+gem "active_model_serializers", "~> 0.10.12"
+
+# Handles the environment variables
+gem "dotenv"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
