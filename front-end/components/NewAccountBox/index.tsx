@@ -12,8 +12,22 @@ export default function NewAccountBox() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  const basicValidation = () => {
-    window.alert("Signup!");
+  const basicValidation = async () => {
+    const response = await fetch("http://localhost:5000/account", {
+      method: "POST",
+      headers: {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        first_name: firstName,
+        last_name: lastName
+      })
+    })
+
+    console.log(await response.json())
   };
 
   return (
