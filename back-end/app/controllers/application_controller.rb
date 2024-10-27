@@ -4,7 +4,6 @@ Dotenv.load
 
 class ApplicationController < ActionController::API
     before_action :authorized
-    skip_before_action :authorized, only: [:create]
 
     def encode_token(payload)
         JWT.encode(payload, ENV["JWT_SECRET"]) 
