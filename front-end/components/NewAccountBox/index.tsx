@@ -5,29 +5,62 @@ import Button from "../Button";
 import Input from "../Input";
 import styles from "./styles.module.scss";
 import { userIcon, lockIcon } from "@/public/icons";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export default function NewAccountBox() {
+  const router = useRouter()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  const basicValidation = async () => {
-    const response = await fetch("http://localhost:5000/account", {
-      method: "POST",
-      headers: {
-        "Accept": "*/*",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-        first_name: firstName,
-        last_name: lastName
-      })
+  const showErrors = (errors: string[]) => {
+    errors.forEach((error) => {
+      toast.error(error)
     })
+  }
 
-    console.log(await response.json())
+  const validateEmail = () => {
+    const isValid = String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+
+    if (!isValid) {
+      throw new Error("The inserted email is invalid.")
+    }
+  };
+
+  const submit = async () => {
+    try {
+      validateEmail()
+
+      const response = await (await fetch("http://localhost:5000/account", {
+        method: "POST",
+        headers: {
+          "Accept": "*/*",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+          first_name: firstName,
+          last_name: lastName
+        })
+      })).json()
+
+      if (response.errors) {
+        showErrors(response.errors)
+        return
+      }
+
+      toast.success("Account created successfully!")
+      router.push("/login")
+    } catch (error) {
+      toast.error((error as Error).message)
+    }
   };
 
   return (
@@ -74,7 +107,7 @@ export default function NewAccountBox() {
       </div>
       <div className={styles.row}>
         <Button
-          onClick={basicValidation}
+          onClick={submit}
           customStyle={{ margin: "0" }}
           buttonText="Sign up"
         />
