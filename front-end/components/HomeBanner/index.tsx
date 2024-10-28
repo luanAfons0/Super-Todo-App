@@ -8,7 +8,7 @@ export default function HomeBanner({ children }: any) {
       {children}
       <div className={styles.HomeBannerContent}>
         <div className={styles.LeftSide}>
-          The right way <br /> to organize <br /> yourself!!!
+          The right way <br /> to organize <br /> yourself!
         </div>
         <div className={styles.RigthSide}>
           <div className={styles.PostIt}>
