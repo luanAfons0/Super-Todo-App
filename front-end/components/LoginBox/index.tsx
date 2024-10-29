@@ -10,14 +10,17 @@ import LoadingSpinner from "../LoadingSpinner";
 import { basicEmailValidation } from "@/utils/validations";
 import { toast } from "react-toastify";
 import { saveInLocalStorage } from "@/utils/localStorage";
+import { useRouter } from "next/navigation";
 
 export default function LoginBox() {
   const [email, setEmail] = useState("");
+  const router = useRouter()
   const { fetchServer, loading } = useServer();
   const [password, setPassword] = useState("");
 
   const successAction = (response: Response) => {
     saveInLocalStorage({ key: "account", value: response });
+    router.push("/account")
   };
 
   const submit = async () => {

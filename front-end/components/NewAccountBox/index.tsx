@@ -10,9 +10,11 @@ import useServer from "@/hook/userServer";
 import LoadingSpinner from "../LoadingSpinner";
 import { basicEmailValidation } from "@/utils/validations";
 import { saveInLocalStorage } from "@/utils/localStorage";
+import { useRouter } from "next/navigation";
 
 export default function NewAccountBox() {
   const { fetchServer, loading } = useServer();
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -20,6 +22,7 @@ export default function NewAccountBox() {
 
   const successAction = (response: Response) => {
     saveInLocalStorage({ key: "account", value: response });
+    router.push("/account")
   };
 
   const submit = async () => {
