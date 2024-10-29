@@ -1,10 +1,12 @@
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
 type RequestObj = {
   method: "POST" | "GET" | "PATCH" | "PUT" | "DELETE";
   route: string;
-  body: any;
+  body?: any;
+  headers?: any,
   successMessage?: string | undefined;
   successAction: Function;
 };
@@ -16,8 +18,13 @@ const showErrors = (errors: string[]) => {
 };
 
 export default function useServer() {
+  const router = useRouter()
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean | undefined>(undefined);
+
+  const handleUnauthorized = () => {
+    router.push("/login")
+  }
 
   const fetchServer = async ({
     method,
@@ -25,6 +32,7 @@ export default function useServer() {
     body,
     successMessage,
     successAction,
+    headers
   }: RequestObj) => {
     setLoading(true);
 
@@ -33,6 +41,7 @@ export default function useServer() {
       {
         method: method,
         headers: {
+          ...headers,
           Accept: "*/*",
           "Content-Type": "application/json",
         },
@@ -47,6 +56,10 @@ export default function useServer() {
 
     if (request.ok === false) {
       showErrors(response.errors ?? [response.message]);
+
+      if (request.status === 401 || request.status === 403) {
+        handleUnauthorized()
+      }
     } else {
       successAction(response);
 
