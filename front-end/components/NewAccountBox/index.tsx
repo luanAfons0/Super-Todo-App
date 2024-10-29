@@ -6,12 +6,11 @@ import Input from "../Input";
 import styles from "./styles.module.scss";
 import { userIcon, lockIcon } from "@/public/icons";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
 import useServer from "@/hook/userServer";
+import LoadingSpinner from "../LoadingSpinner";
 
 export default function NewAccountBox() {
-  const { fetchServer } = useServer()
-  const router = useRouter()
+  const { fetchServer, loading } = useServer();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -21,17 +20,17 @@ export default function NewAccountBox() {
     const isValid = String(email)
       .toLowerCase()
       .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
       );
 
     if (!isValid) {
-      throw new Error("The inserted email is invalid.")
+      throw new Error("The inserted email is invalid.");
     }
   };
 
   const submit = async () => {
     try {
-      validateEmail()
+      validateEmail();
 
       await fetchServer({
         method: "POST",
@@ -40,17 +39,18 @@ export default function NewAccountBox() {
           email: email,
           password: password,
           first_name: firstName,
-          last_name: lastName
+          last_name: lastName,
         },
-        successMessage: "Account created successfully!"
-      })
+        successMessage: "Account created successfully!",
+      });
     } catch (error) {
-      toast.error((error as Error).message)
+      toast.error((error as Error).message);
     }
   };
 
   return (
     <div className={styles.container}>
+      {loading && <LoadingSpinner />}
       <div className={styles.row}>
         <h1>Create account!</h1>
       </div>
