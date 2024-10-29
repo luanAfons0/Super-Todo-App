@@ -13,7 +13,7 @@ export const saveInLocalStorage = ({
 export const getFromLocalStorage = ({ key }: { key: string }) => {
   if (typeof window !== "undefined") {
     const storedItem = localStorage.getItem(key);
-    return storedItem;
+    return JSON.parse(String(storedItem));
   }
 };
 
