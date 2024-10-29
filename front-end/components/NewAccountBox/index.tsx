@@ -7,19 +7,15 @@ import styles from "./styles.module.scss";
 import { userIcon, lockIcon } from "@/public/icons";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import useServer from "@/hook/userServer";
 
 export default function NewAccountBox() {
+  const { fetchServer } = useServer()
   const router = useRouter()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-
-  const showErrors = (errors: string[]) => {
-    errors.forEach((error) => {
-      toast.error(error)
-    })
-  }
 
   const validateEmail = () => {
     const isValid = String(email)
@@ -37,27 +33,17 @@ export default function NewAccountBox() {
     try {
       validateEmail()
 
-      const response = await (await fetch("http://localhost:5000/account", {
+      await fetchServer({
         method: "POST",
-        headers: {
-          "Accept": "*/*",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
+        route: "account",
+        body: {
           email: email,
           password: password,
           first_name: firstName,
           last_name: lastName
-        })
-      })).json()
-
-      if (response.errors) {
-        showErrors(response.errors)
-        return
-      }
-
-      toast.success("Account created successfully!")
-      router.push("/login")
+        },
+        successMessage: "Account created successfully!"
+      })
     } catch (error) {
       toast.error((error as Error).message)
     }
