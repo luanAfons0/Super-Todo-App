@@ -8,6 +8,8 @@ import { userIcon, lockIcon } from "@/public/icons";
 import { toast } from "react-toastify";
 import useServer from "@/hook/userServer";
 import LoadingSpinner from "../LoadingSpinner";
+import { basicEmailValidation } from "@/utils/validations";
+import { saveInLocalStorage } from "@/utils/localStorage";
 
 export default function NewAccountBox() {
   const { fetchServer, loading } = useServer();
@@ -16,21 +18,13 @@ export default function NewAccountBox() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  const validateEmail = () => {
-    const isValid = String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-      );
-
-    if (!isValid) {
-      throw new Error("The inserted email is invalid.");
-    }
+  const successAction = (response: Response) => {
+    saveInLocalStorage({ key: "account", value: response });
   };
 
   const submit = async () => {
     try {
-      validateEmail();
+      basicEmailValidation(email);
 
       await fetchServer({
         method: "POST",
@@ -42,6 +36,7 @@ export default function NewAccountBox() {
           last_name: lastName,
         },
         successMessage: "Account created successfully!",
+        successAction,
       });
     } catch (error) {
       toast.error((error as Error).message);

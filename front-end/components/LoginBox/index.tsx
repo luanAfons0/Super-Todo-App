@@ -5,17 +5,43 @@ import Button from "../Button";
 import Input from "../Input";
 import styles from "./styles.module.scss";
 import { userIcon, lockIcon } from "@/public/icons";
+import useServer from "@/hook/userServer";
+import LoadingSpinner from "../LoadingSpinner";
+import { basicEmailValidation } from "@/utils/validations";
+import { toast } from "react-toastify";
+import { saveInLocalStorage } from "@/utils/localStorage";
 
 export default function LoginBox() {
   const [email, setEmail] = useState("");
+  const { fetchServer, loading } = useServer();
   const [password, setPassword] = useState("");
 
-  const basicValidation = () => {
-    window.alert("Login!");
+  const successAction = (response: Response) => {
+    saveInLocalStorage({ key: "account", value: response });
+  };
+
+  const submit = async () => {
+    try {
+      basicEmailValidation(email);
+
+      await fetchServer({
+        method: "POST",
+        route: "auth/login",
+        body: {
+          email: email,
+          password: password,
+        },
+        successMessage: "Login successfully!",
+        successAction,
+      });
+    } catch (error) {
+      toast.error((error as Error).message);
+    }
   };
 
   return (
     <div className={styles.container}>
+      {loading && <LoadingSpinner />}
       <div className={styles.row}>
         <h1>Welcome back!</h1>
       </div>
@@ -40,7 +66,7 @@ export default function LoginBox() {
       </div>
       <div className={styles.row}>
         <Button
-          onClick={basicValidation}
+          onClick={submit}
           customStyle={{ margin: "0" }}
           buttonText="Login"
         />
