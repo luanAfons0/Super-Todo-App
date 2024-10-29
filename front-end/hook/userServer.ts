@@ -6,6 +6,7 @@ type RequestObj = {
   route: string;
   body: any;
   successMessage?: string | undefined;
+  successAction: Function;
 };
 
 const showErrors = (errors: string[]) => {
@@ -23,6 +24,7 @@ export default function useServer() {
     route,
     body,
     successMessage,
+    successAction,
   }: RequestObj) => {
     setLoading(true);
 
@@ -39,13 +41,14 @@ export default function useServer() {
     );
 
     const response = await request.json();
+
+    setSuccess(response.ok);
     setLoading(false);
 
-    if (response.errors) {
-      setSuccess(false);
-      showErrors(response.errors);
+    if (request.ok === false) {
+      showErrors(response.errors ?? [response.message]);
     } else {
-      setSuccess(true);
+      successAction(response);
 
       if (successMessage) {
         toast.success(successMessage);
