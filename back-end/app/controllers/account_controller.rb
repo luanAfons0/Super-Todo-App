@@ -8,7 +8,7 @@ class AccountController < ApplicationController
         if @account.save
             render json: { **@account.as_json, token: @token}, status: :created
         else
-            render json: { message: "Error creating account", errors: @account.errors.full_messages }
+            render json: { message: "Error creating account", errors: @account.errors.full_messages }, status: :internal_server_error
         end
     end
 
