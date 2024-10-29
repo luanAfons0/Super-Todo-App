@@ -12,8 +12,9 @@ class AccountController < ApplicationController
         end
     end
 
-    def index
-        render json: { accounts: Account.all.map(&:as_json) }
+    def show
+        @account = Account.find_by(params[:id])
+        render json: { account: @account.as_json }
     end
 
     private

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources  :account, only: [:create, :index]
+  resources  :account, only: [:create, :show]
 
   post "auth/login" => "auth#login"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
