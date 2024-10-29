@@ -4,7 +4,7 @@ class AuthController < ApplicationController
 
   def login
     @account = Account.find_by!(email: login_params[:email])
-    @token = encode_token(user_id: @account.id)
+    @token = encode_token(account_id: @account.id)
     if @account.authenticate(login_params[:password])
       render json: { **@account.as_json, token: @token}, status: :accepted
     else
