@@ -6,9 +6,9 @@ type RequestObj = {
   method: "POST" | "GET" | "PATCH" | "PUT" | "DELETE";
   route: string;
   body?: any;
-  headers?: any,
+  headers?: any;
   successMessage?: string | undefined;
-  successAction: Function;
+  successAction?: Function;
 };
 
 const showErrors = (errors: string[]) => {
@@ -18,13 +18,13 @@ const showErrors = (errors: string[]) => {
 };
 
 export default function useServer() {
-  const router = useRouter()
+  const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean | undefined>(undefined);
 
   const handleUnauthorized = () => {
-    router.push("/login")
-  }
+    router.push("/login");
+  };
 
   const fetchServer = async ({
     method,
@@ -32,7 +32,7 @@ export default function useServer() {
     body,
     successMessage,
     successAction,
-    headers
+    headers,
   }: RequestObj) => {
     setLoading(true);
 
@@ -58,10 +58,12 @@ export default function useServer() {
       showErrors(response.errors ?? [response.message]);
 
       if (request.status === 401 || request.status === 403) {
-        handleUnauthorized()
+        handleUnauthorized();
       }
     } else {
-      successAction(response);
+      if (successAction) {
+        successAction(response);
+      }
 
       if (successMessage) {
         toast.success(successMessage);
