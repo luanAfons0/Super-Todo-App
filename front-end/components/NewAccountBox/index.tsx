@@ -8,7 +8,7 @@ import { userIcon, lockIcon } from "@/public/icons";
 import { toast } from "react-toastify";
 import useServer from "@/hook/userServer";
 import LoadingSpinner from "../LoadingSpinner";
-import { basicEmailValidation } from "@/utils/validations";
+import { basicEmailValidation, validatePassword } from "@/utils/validations";
 import { saveInLocalStorage } from "@/utils/localStorage";
 import { useRouter } from "next/navigation";
 
@@ -22,12 +22,13 @@ export default function NewAccountBox() {
 
   const successAction = (response: Response) => {
     saveInLocalStorage({ key: "account", value: response });
-    router.push("/account")
+    router.push("/account");
   };
 
   const submit = async () => {
     try {
       basicEmailValidation(email);
+      validatePassword({ password });
 
       await fetchServer({
         method: "POST",

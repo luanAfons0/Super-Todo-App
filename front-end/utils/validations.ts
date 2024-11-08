@@ -9,3 +9,20 @@ export const basicEmailValidation = (email: string) => {
     throw new Error("The inserted email is invalid.");
   }
 };
+
+
+export const validatePassword = ({ password, newPassword }: { password: string, newPassword?: string }) => {
+  if (newPassword || newPassword == "") {
+    if (password !== "" && newPassword === "") {
+      throw new Error("Confirm password cannot be empty.");
+    }
+
+    if (newPassword !== password) {
+      throw new Error("Passwords do not match.");
+    }
+  }
+
+  if (password !== "" && password.length <= 5) {
+    throw new Error("Password is to short.");
+  }
+}
