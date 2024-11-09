@@ -10,7 +10,6 @@
 
     .tooltiptext {
         visibility: hidden;
-        max-width: 180px;
         background-color: var(--nickel);
         color: var(--ivory);
         text-align: center;
@@ -19,8 +18,8 @@
         position: absolute;
         z-index: 1;
         bottom: 105%;
-        left: 50%;
-        margin-left: -60px;
+        left: 0;
+        right: 0;
         opacity: 0;
         transition: opacity 0.3s;
 

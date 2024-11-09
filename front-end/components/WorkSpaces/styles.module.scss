@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 12px;
+    background: var(--ivory);
+    width: 80%;
+
+    @media (max-width: 548px) {
+        justify-content: center;
+        align-items: center;
+
+        hr {
+            width: 100%;
+        }
+    }
+
+    .box {
+        display: flex;
+        flex-direction: row;
+        background-color: var(--ivory);
+        flex-wrap: wrap;
+        gap: 1rem;
+        border-radius: 12px;
+    }
+}
