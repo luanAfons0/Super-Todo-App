@@ -12,7 +12,6 @@ import { useState } from "react";
 import Button from "../Button";
 import Input from "../Input";
 
-
 export default function LoginBox() {
   const { fetchServer, loading } = useServer();
   const [password, setPassword] = useState("");

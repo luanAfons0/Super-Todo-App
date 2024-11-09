@@ -1,6 +1,10 @@
 "use client";
 
-import { deleteFromLocalStorage, getFromLocalStorage, saveInLocalStorage } from "@/utils/localStorage";
+import {
+  deleteFromLocalStorage,
+  getFromLocalStorage,
+  saveInLocalStorage,
+} from "@/utils/localStorage";
 import { basicEmailValidation, validatePassword } from "@/utils/validations";
 import LoadingSpinner from "../LoadingSpinner";
 import { useEffect, useState } from "react";
@@ -17,7 +21,7 @@ type Account = {
   email: string;
   token: string;
   id: Number;
-}
+};
 
 export default function UserInfos() {
   const account = getFromLocalStorage({ key: "account" });
@@ -39,12 +43,12 @@ export default function UserInfos() {
       });
     };
 
-    validateUser()
+    validateUser();
   }, [account, fetchServer]);
 
   const editSuccess = (account: Account) => {
-    saveInLocalStorage({ key: "account", value: account })
-  }
+    saveInLocalStorage({ key: "account", value: account });
+  };
 
   const editFunction = async () => {
     try {
@@ -61,8 +65,8 @@ export default function UserInfos() {
           password,
           email,
         },
-        successAction: editSuccess
-      })
+        successAction: editSuccess,
+      });
     } catch (error) {
       toast.error((error as Error).message);
     }
@@ -72,7 +76,7 @@ export default function UserInfos() {
     deleteFromLocalStorage({ key: "account" });
     toast.success("Logout successfully!");
     router.push("/");
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -106,14 +110,8 @@ export default function UserInfos() {
         </div>
         <hr />
         <div className={styles.buttonRow}>
-          <Button
-            buttonText="Logout"
-            onClick={logoutFunction}
-          />
-          <Button
-            buttonText="Edit"
-            onClick={editFunction}
-          />
+          <Button buttonText="Logout" onClick={logoutFunction} />
+          <Button buttonText="Edit" onClick={editFunction} />
         </div>
       </div>
     </div>

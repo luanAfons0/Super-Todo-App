@@ -1,4 +1,4 @@
-import { ClipboardList, ClipboardPlus, Clock, Globe } from 'lucide-react';
+import { ClipboardList, ClipboardPlus, Clock, Globe } from "lucide-react";
 import styles from "./styles.module.scss";
 
 export default function ListOfBenefits() {

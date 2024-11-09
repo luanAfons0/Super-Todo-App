@@ -2,7 +2,7 @@
 
 import { basicEmailValidation, validatePassword } from "@/utils/validations";
 import { saveInLocalStorage } from "@/utils/localStorage";
-import { User, LockKeyhole } from 'lucide-react';
+import { User, LockKeyhole } from "lucide-react";
 import LoadingSpinner from "../LoadingSpinner";
 import { useRouter } from "next/navigation";
 import styles from "./styles.module.scss";
@@ -11,7 +11,6 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import Button from "../Button";
 import Input from "../Input";
-
 
 export default function NewAccountBox() {
   const [firstName, setFirstName] = useState("");

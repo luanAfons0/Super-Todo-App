@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
-import { X } from 'lucide-react';
+import { X } from "lucide-react";
 import Link from "next/link";
 
 export default function Header() {
