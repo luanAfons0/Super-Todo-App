@@ -82,6 +82,7 @@ export default function UserInfos() {
       {loading && <LoadingSpinner />}
       <div className={styles.box}>
         <h1>Account infos:</h1>
+        <hr />
         <div className={styles.row}>
           <div className={styles.item}>
             <label>First Name:</label>
