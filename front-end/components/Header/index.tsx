@@ -1,12 +1,13 @@
 "use client";
-import Link from "next/link";
-import styles from "./styles.module.scss";
+
 import { useEffect, useRef, useState } from "react";
 import { excludeIcon } from "@/public/icons";
+import styles from "./styles.module.scss";
+import Link from "next/link";
 
 export default function Header() {
-  const mobileLines = Array.from({ length: 3 });
   const [mobileMenu, setMobileMenu] = useState(false);
+  const mobileLines = Array.from({ length: 3 });
   const mobileMenuRef = useRef<any>(null);
 
   useEffect(() => {

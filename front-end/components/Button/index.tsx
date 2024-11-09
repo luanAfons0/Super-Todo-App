@@ -3,19 +3,19 @@
 import styles from "./styles.module.scss";
 
 export default function Button({
-  buttonText,
   customStyle,
+  buttonText,
   onClick,
 }: {
   buttonText: string;
-  customStyle?: any;
   onClick?: Function;
+  customStyle?: any;
 }) {
   return (
     <button
       onClick={() => (onClick ? onClick() : undefined)}
-      className={styles.button}
       style={{ ...customStyle }}
+      className={styles.button}
     >
       <p>{buttonText}</p>
     </button>

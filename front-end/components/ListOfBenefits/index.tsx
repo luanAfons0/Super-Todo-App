@@ -1,5 +1,5 @@
-import styles from "./styles.module.scss";
 import { listIcon, editIcon, globeIcon, clockIcon } from "@/public/icons";
+import styles from "./styles.module.scss";
 
 export default function ListOfBenefits() {
   return (

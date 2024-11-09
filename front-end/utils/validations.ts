@@ -10,8 +10,13 @@ export const basicEmailValidation = (email: string) => {
   }
 };
 
-
-export const validatePassword = ({ password, newPassword }: { password: string, newPassword?: string }) => {
+export const validatePassword = ({
+  password,
+  newPassword,
+}: {
+  password: string;
+  newPassword?: string;
+}) => {
   if (newPassword || newPassword == "") {
     if (password !== "" && newPassword === "") {
       throw new Error("Confirm password cannot be empty.");
@@ -25,4 +30,4 @@ export const validatePassword = ({ password, newPassword }: { password: string, 
   if (password !== "" && password.length <= 5) {
     throw new Error("Password is to short.");
   }
-}
+};

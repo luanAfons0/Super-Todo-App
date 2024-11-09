@@ -4,8 +4,8 @@ import styles from "./styles.module.scss";
 import { useState } from "react";
 
 export default function PostItDemonstration() {
-  const lines = Array.from({ length: 6 });
   const [randomColor, setRandomColor] = useState("#eee30c");
+  const lines = Array.from({ length: 6 });
 
   const randomHexColorCode = () => {
     let n = (Math.random() * 0xfffff * 1000000).toString(16);

@@ -1,20 +1,20 @@
 "use client";
 
-import { ReactNode } from "react";
 import styles from "./styles.module.scss";
+import { ReactNode } from "react";
 
 type InputProps = {
   type: "number" | "text" | "password";
-  value: string;
-  setValue: Function;
   startIcon?: ReactNode;
+  setValue: Function;
+  value: string;
 };
 
 export default function Input({
-  type,
-  value,
-  setValue,
   startIcon = undefined,
+  setValue,
+  value,
+  type,
 }: InputProps) {
   return (
     <div className={styles.container}>

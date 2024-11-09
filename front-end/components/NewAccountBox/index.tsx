@@ -1,24 +1,24 @@
 "use client";
 
+import { basicEmailValidation, validatePassword } from "@/utils/validations";
+import { saveInLocalStorage } from "@/utils/localStorage";
+import { userIcon, lockIcon } from "@/public/icons";
+import LoadingSpinner from "../LoadingSpinner";
+import { useRouter } from "next/navigation";
+import styles from "./styles.module.scss";
+import useServer from "@/hook/userServer";
+import { toast } from "react-toastify";
 import { useState } from "react";
 import Button from "../Button";
 import Input from "../Input";
-import styles from "./styles.module.scss";
-import { userIcon, lockIcon } from "@/public/icons";
-import { toast } from "react-toastify";
-import useServer from "@/hook/userServer";
-import LoadingSpinner from "../LoadingSpinner";
-import { basicEmailValidation, validatePassword } from "@/utils/validations";
-import { saveInLocalStorage } from "@/utils/localStorage";
-import { useRouter } from "next/navigation";
 
 export default function NewAccountBox() {
-  const { fetchServer, loading } = useServer();
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
+  const { fetchServer, loading } = useServer();
+  const [password, setPassword] = useState("");
   const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const router = useRouter();
 
   const successAction = (response: Response) => {
     saveInLocalStorage({ key: "account", value: response });
@@ -27,17 +27,17 @@ export default function NewAccountBox() {
 
   const submit = async () => {
     try {
-      basicEmailValidation(email);
       validatePassword({ password });
+      basicEmailValidation(email);
 
       await fetchServer({
         method: "POST",
         route: "account",
         body: {
-          email: email,
-          password: password,
           first_name: firstName,
           last_name: lastName,
+          password: password,
+          email: email,
         },
         successMessage: "Account created successfully!",
         successAction,

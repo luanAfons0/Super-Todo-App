@@ -1,22 +1,22 @@
 "use client";
 
+import { basicEmailValidation, validatePassword } from "@/utils/validations";
+import { saveInLocalStorage } from "@/utils/localStorage";
+import { userIcon, lockIcon } from "@/public/icons";
+import LoadingSpinner from "../LoadingSpinner";
+import { useRouter } from "next/navigation";
+import styles from "./styles.module.scss";
+import useServer from "@/hook/userServer";
+import { toast } from "react-toastify";
 import { useState } from "react";
 import Button from "../Button";
 import Input from "../Input";
-import styles from "./styles.module.scss";
-import { userIcon, lockIcon } from "@/public/icons";
-import useServer from "@/hook/userServer";
-import LoadingSpinner from "../LoadingSpinner";
-import { basicEmailValidation, validatePassword } from "@/utils/validations";
-import { toast } from "react-toastify";
-import { saveInLocalStorage } from "@/utils/localStorage";
-import { useRouter } from "next/navigation";
 
 export default function LoginBox() {
-  const [email, setEmail] = useState("");
-  const router = useRouter();
   const { fetchServer, loading } = useServer();
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const router = useRouter();
 
   const successAction = (response: Response) => {
     saveInLocalStorage({ key: "account", value: response });
@@ -25,8 +25,8 @@ export default function LoginBox() {
 
   const submit = async () => {
     try {
-      basicEmailValidation(email);
       validatePassword({ password });
+      basicEmailValidation(email);
 
       await fetchServer({
         method: "POST",
