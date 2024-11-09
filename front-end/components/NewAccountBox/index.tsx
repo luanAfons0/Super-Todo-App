@@ -2,7 +2,7 @@
 
 import { basicEmailValidation, validatePassword } from "@/utils/validations";
 import { saveInLocalStorage } from "@/utils/localStorage";
-import { userIcon, lockIcon } from "@/public/icons";
+import { User, LockKeyhole } from 'lucide-react';
 import LoadingSpinner from "../LoadingSpinner";
 import { useRouter } from "next/navigation";
 import styles from "./styles.module.scss";
@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import Button from "../Button";
 import Input from "../Input";
+
 
 export default function NewAccountBox() {
   const [firstName, setFirstName] = useState("");
@@ -59,7 +60,7 @@ export default function NewAccountBox() {
           type="text"
           value={firstName}
           setValue={setFirstName}
-          startIcon={userIcon}
+          startIcon={<User />}
         />
       </div>
       <div className={styles.row}>
@@ -68,7 +69,7 @@ export default function NewAccountBox() {
           type="text"
           value={lastName}
           setValue={setLastName}
-          startIcon={userIcon}
+          startIcon={<User />}
         />
       </div>
       <div className={styles.row}>
@@ -77,7 +78,7 @@ export default function NewAccountBox() {
           type="text"
           value={email}
           setValue={setEmail}
-          startIcon={userIcon}
+          startIcon={<User />}
         />
       </div>
       <div className={styles.row}>
@@ -86,7 +87,7 @@ export default function NewAccountBox() {
           type="password"
           value={password}
           setValue={setPassword}
-          startIcon={lockIcon}
+          startIcon={<LockKeyhole />}
         />
         <a href="/forgot-password">Forgot password?</a>
       </div>

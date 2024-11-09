@@ -1,4 +1,4 @@
-import { listIcon, editIcon, globeIcon, clockIcon } from "@/public/icons";
+import { ClipboardList, ClipboardPlus, Clock, Globe } from 'lucide-react';
 import styles from "./styles.module.scss";
 
 export default function ListOfBenefits() {
@@ -10,28 +10,28 @@ export default function ListOfBenefits() {
       </p>
       <div className={styles.benefits}>
         <div>
-          {listIcon}
+          <ClipboardList strokeWidth={1} />
           <p className={styles.ligthText}>
             Organize your
             <br /> to-do list
           </p>
         </div>
         <div>
-          {editIcon}
+          <ClipboardPlus strokeWidth={1} />
           <p className={styles.ligthText}>
             Add details to <br />
             all tasks
           </p>
         </div>
         <div>
-          {globeIcon}
+          <Globe strokeWidth={1} />
           <p className={styles.ligthText}>
             Plan your day <br />
             wherever you are
           </p>
         </div>
         <div>
-          {clockIcon}
+          <Clock strokeWidth={1} />
           <p className={styles.ligthText}>
             Never miss <br />
             deadlines

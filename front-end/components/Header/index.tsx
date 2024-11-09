@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { excludeIcon } from "@/public/icons";
 import styles from "./styles.module.scss";
+import { X } from 'lucide-react';
 import Link from "next/link";
 
 export default function Header() {
@@ -91,7 +91,9 @@ export default function Header() {
               </li>
             </ul>
 
-            <div onClick={() => setMobileMenu(false)}>{excludeIcon}</div>
+            <div onClick={() => setMobileMenu(false)}>
+              <X />
+            </div>
           </div>
         </div>
       )}
