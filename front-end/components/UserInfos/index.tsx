@@ -30,17 +30,17 @@ export default function UserInfos() {
   const { fetchServer, loading } = useServer();
   const router = useRouter();
 
-  const validateUser = async () => {
-    await fetchServer({
-      method: "GET",
-      route: `account/${account?.id}`,
-      headers: { Authorization: `Bearer ${account?.token}` },
-    });
-  };
-
   useEffect(() => {
-    validateUser();
-  }, []);
+    const validateUser = async () => {
+      await fetchServer({
+        method: "GET",
+        route: `account/${account?.id}`,
+        headers: { Authorization: `Bearer ${account?.token}` },
+      });
+    };
+
+    validateUser()
+  }, [account, fetchServer]);
 
   const editSuccess = (account: Account) => {
     saveInLocalStorage({ key: "account", value: account })
