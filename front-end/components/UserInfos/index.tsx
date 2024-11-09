@@ -1,6 +1,6 @@
 "use client";
 
-import { deleteFromLocalStorage, getFromLocalStorage } from "@/utils/localStorage";
+import { deleteFromLocalStorage, getFromLocalStorage, saveInLocalStorage } from "@/utils/localStorage";
 import { basicEmailValidation, validatePassword } from "@/utils/validations";
 import LoadingSpinner from "../LoadingSpinner";
 import { useEffect, useState } from "react";
@@ -10,6 +10,14 @@ import styles from "./styles.module.scss";
 import { toast } from "react-toastify";
 import Button from "../Button";
 import Input from "../Input";
+
+type Account = {
+  first_name: string;
+  last_name: string;
+  email: string;
+  token: string;
+  id: Number;
+}
 
 export default function UserInfos() {
   const account = getFromLocalStorage({ key: "account" });
@@ -23,12 +31,10 @@ export default function UserInfos() {
   const router = useRouter();
 
   const validateUser = async () => {
-    const localStorageAccount = getFromLocalStorage({ key: "account" });
-
     await fetchServer({
       method: "GET",
-      route: `account/${localStorageAccount?.id}`,
-      headers: { Authorization: `Bearer ${localStorageAccount?.token}` },
+      route: `account/${account?.id}`,
+      headers: { Authorization: `Bearer ${account?.token}` },
     });
   };
 
@@ -36,10 +42,27 @@ export default function UserInfos() {
     validateUser();
   }, []);
 
-  const editFunction = () => {
+  const editSuccess = (account: Account) => {
+    saveInLocalStorage({ key: "account", value: account })
+  }
+
+  const editFunction = async () => {
     try {
       validatePassword({ password: password, newPassword: confirmPassword });
       basicEmailValidation(email);
+
+      await fetchServer({
+        method: "PATCH",
+        route: "/account/update",
+        headers: { Authorization: `Bearer ${account?.token}` },
+        body: {
+          first_name: firstName,
+          last_name: lastName,
+          password,
+          email,
+        },
+        successAction: editSuccess
+      })
     } catch (error) {
       toast.error((error as Error).message);
     }

@@ -17,6 +17,16 @@ class AccountController < ApplicationController
         render json: @account.as_json
     end
 
+    def update
+        @account.update(account_params)
+        @token = encode_token(account_id: @account.id)
+        if @account.save
+            render json: { **@account.as_json, token: @token}, status: :ok
+        else
+            render json: { message: "Error updating account", errors: @account.errors.full_messages }, status: :internal_server_error
+        end
+    end
+
     private
 
     def account_params
