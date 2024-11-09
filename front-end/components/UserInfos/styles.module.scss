@@ -16,10 +16,28 @@
             justify-content: center;
             flex-wrap: wrap;
 
+            @media (max-width: 768px) {
+                flex-direction: column;
+            }
+
             .item {
                 flex: 1;
                 margin: 1rem;
                 width: 15rem;
+
+                @media (max-width: 768px) {
+                    width: fit-content;
+                }
+            }
+        }
+
+        .buttonRow {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+
+            button {
+                padding: 0.5rem 1rem;
             }
         }
     }

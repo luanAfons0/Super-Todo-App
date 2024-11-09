@@ -1,9 +1,10 @@
 "use client";
 
+import { deleteFromLocalStorage, getFromLocalStorage } from "@/utils/localStorage";
 import { basicEmailValidation, validatePassword } from "@/utils/validations";
-import { getFromLocalStorage } from "@/utils/localStorage";
 import LoadingSpinner from "../LoadingSpinner";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import useServer from "@/hook/userServer";
 import styles from "./styles.module.scss";
 import { toast } from "react-toastify";
@@ -19,6 +20,7 @@ export default function UserInfos() {
   const [email, setEmail] = useState(account?.email);
   const [password, setPassword] = useState("");
   const { fetchServer, loading } = useServer();
+  const router = useRouter();
 
   const validateUser = async () => {
     const localStorageAccount = getFromLocalStorage({ key: "account" });
@@ -42,6 +44,12 @@ export default function UserInfos() {
       toast.error((error as Error).message);
     }
   };
+
+  const logoutFunction = () => {
+    deleteFromLocalStorage({ key: "account" });
+    toast.success("Logout successfully!");
+    router.push("/");
+  }
 
   return (
     <div className={styles.container}>
@@ -74,15 +82,13 @@ export default function UserInfos() {
           </div>
         </div>
         <hr />
-        <div className={styles.row}>
+        <div className={styles.buttonRow}>
+          <Button
+            buttonText="Logout"
+            onClick={logoutFunction}
+          />
           <Button
             buttonText="Edit"
-            customStyle={{
-              padding: "0.5rem 1rem",
-              margin: "0",
-              alignSelf: "flex-end",
-              marginLeft: "auto",
-            }}
             onClick={editFunction}
           />
         </div>
