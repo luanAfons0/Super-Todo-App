@@ -42,9 +42,8 @@ export default function UserInfos() {
         headers: { Authorization: `Bearer ${account?.token}` },
       });
     };
-
     validateUser();
-  }, [account, fetchServer]);
+  }, []);
 
   const editSuccess = (account: Account) => {
     saveInLocalStorage({ key: "account", value: account });
