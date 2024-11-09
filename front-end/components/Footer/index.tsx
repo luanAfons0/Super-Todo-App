@@ -3,7 +3,7 @@ import {
   instagramIcon,
   facebookIcon,
   whatsappIcon,
-} from "../../public/icons/index";
+} from "../icons/index";
 
 export default function Footer() {
   return (
