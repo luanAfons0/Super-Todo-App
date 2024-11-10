@@ -16,7 +16,8 @@
         "prettier/prettier": 2,
         "build": 2
       }
-    }
+    },
+    "prepare": "husky"
   },
   "dependencies": {
     "caniuse-lite": "^1.0.30001671",
