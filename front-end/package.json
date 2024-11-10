@@ -7,17 +7,7 @@
     "build": "next build",
     "start": "next start",
     "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,css,json}\"",
-    "lint": "next lint",
-    "husky": {
-      "hooks": {
-        "pre-commit": "npm run pretty && npm run build"
-      },
-      "rules": {
-        "prettier/prettier": 2,
-        "build": 2
-      }
-    },
-    "prepare": "husky"
+    "lint": "next lint"
   },
   "dependencies": {
     "caniuse-lite": "^1.0.30001671",
@@ -33,7 +23,6 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
-    "husky": "^9.1.6",
     "prettier": "^3.3.3",
     "sass": "^1.80.4",
     "typescript": "^5"
