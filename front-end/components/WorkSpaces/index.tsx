@@ -3,6 +3,7 @@
 import WorkSpaceCard, { TypeWorkSpaceCard } from "../WorkSpaceCard";
 import { getFromLocalStorage } from "@/utils/localStorage";
 import NewWorkSpaceModal from "../NewWorkSpaceModal";
+import LoadingSpinner from "../LoadingSpinner";
 import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import useServer from "@/hook/userServer";
@@ -18,9 +19,10 @@ export type Workspace = {
 };
 
 export default function WorkSpaces() {
+  const [createWorkspaceModal, setCreateWorkspaceModal] =
+    useState<boolean>(false);
   const [workSpaces, setWorkSpaces] = useState<TypeWorkSpaceCard[]>([]);
   const account = getFromLocalStorage({ key: "account" });
-  const [modal, setModal] = useState<boolean>(false);
   const { fetchServer, loading } = useServer();
   const router = useRouter();
 
@@ -43,7 +45,7 @@ export default function WorkSpaces() {
         id: 0,
         description: "Click to create a workspace.",
         name: "Create workspace.",
-        onClick: () => setModal(!modal),
+        onClick: () => setCreateWorkspaceModal(!createWorkspaceModal),
       },
       ...workspaces,
     ]);
@@ -55,10 +57,11 @@ export default function WorkSpaces() {
 
   return (
     <div className={styles.container}>
-      <Modal modal={modal} setModal={setModal}>
+      {loading && <LoadingSpinner />}
+      <Modal modal={createWorkspaceModal} setModal={setCreateWorkspaceModal}>
         <NewWorkSpaceModal
           onSuccess={() => {
-            setModal(!modal);
+            setCreateWorkspaceModal(!createWorkspaceModal);
             toast.success("Workspace created successfully!");
             getUserWorkSpaces();
           }}

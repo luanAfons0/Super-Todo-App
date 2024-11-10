@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   resources  :account, only: [:create, :show, :update]
 
   # Workspaces related
-  get "account/:id/workspaces" => "workspace#get_related_workspaces"
-  post "account/:id/workspaces" => "workspace#create_workspace"
+  post "account/:account_id/workspaces" => "workspace#create_workspace"
+  get "account/:account_id/workspaces" => "workspace#get_related_workspaces"
+  patch "account/:account_id/workspaces/:worspace_id" => "workspace#update_workspace"
+  delete "account/:account_id/workspaces/:worspace_id" => "workspace#destroy_workspace"
 
   # Auth
   post "auth/login" => "auth#login"

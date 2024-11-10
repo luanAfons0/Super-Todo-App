@@ -1,0 +1,22 @@
+.container {
+    background-color: var(--ivory);
+    padding: 2rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+
+    .item {
+        margin-bottom: 2rem;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    .row {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
