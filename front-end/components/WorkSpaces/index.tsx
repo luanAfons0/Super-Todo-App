@@ -54,11 +54,9 @@ export default function WorkSpaces() {
 
   return (
     <div className={styles.container}>
-      {modal && (
-        <Modal modal={modal} setModal={setModal}>
-          <NewWorkSpaceModal />
-        </Modal>
-      )}
+      <Modal modal={modal} setModal={setModal}>
+        <NewWorkSpaceModal />
+      </Modal>
       <h1>Your WorkSpaces:</h1>
       <hr />
       <div className={styles.box}>
