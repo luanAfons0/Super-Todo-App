@@ -5,7 +5,40 @@
     border: 1px solid var(--chinese-black);
     height: 12rem;
     width: 12rem;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     cursor: pointer;
+
+    .cardHeader {
+        text-align: center;
+        flex: 1;
+        width: 100%;
+
+        h3 {
+            margin-top: 1rem;
+        }
+    }
+
+    .cardFooter {
+        display: flex;
+        border-top: 1px solid var(--chinese-black);
+        height: 2.5rem;
+        width: 100%;
+        border-radius: 0 0 12px 12px;
+
+        button {
+            cursor: pointer;
+            color: var(--ivory);
+            width: 50%;
+            border-radius: 0 0 0 12px;
+            border: unset;
+            background-color: var(--rich-electric-blue);
+
+            &:last-of-type {
+                background-color: var(--sweetbrown);
+                border-left: 1px solid var(--chinese-black);
+                border-radius: 0 0 12px 0;
+            }
+        }
+    }
 }
