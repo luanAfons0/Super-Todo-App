@@ -1,7 +1,6 @@
 .container {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted var(--chinese-black);
 
     &:hover .tooltiptext {
         visibility: visible;

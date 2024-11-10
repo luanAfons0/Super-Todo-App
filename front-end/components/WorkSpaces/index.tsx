@@ -8,13 +8,14 @@ import styles from "./styles.module.scss";
 import useServer from "@/hook/userServer";
 import Modal from "../Modal";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export type Workspace = {
   id: number;
   account_id: number;
   name: string;
   description: string;
-}
+};
 
 export default function WorkSpaces() {
   const [workSpaces, setWorkSpaces] = useState<TypeWorkSpaceCard[]>([]);
@@ -23,39 +24,45 @@ export default function WorkSpaces() {
   const { fetchServer, loading } = useServer();
   const router = useRouter();
 
+  const getUserWorkSpaces = async () => {
+    const response = await fetchServer({
+      method: "GET",
+      headers: { Authorization: `Bearer ${account?.token}` },
+      route: `/account/${account?.id}/workspaces`,
+    });
+
+    const workspaces = response.workspaces.map((workspace: Workspace) => {
+      return {
+        ...workspace,
+        onClick: () => router.push(`/workspace/${workspace.id}`),
+      };
+    });
+
+    setWorkSpaces([
+      {
+        id: 0,
+        description: "Click to create a workspace.",
+        name: "Create workspace.",
+        onClick: () => setModal(!modal),
+      },
+      ...workspaces,
+    ]);
+  };
+
   useEffect(() => {
-    const getUserWorkSpaces = async () => {
-      const response = await fetchServer({
-        method: "GET",
-        headers: { Authorization: `Bearer ${account?.token}` },
-        route: `/account/${account?.id}/workspaces`,
-      });
-
-      const workspaces = response.workspaces.map((workspace: Workspace) => {
-        return ({
-          ...workspace,
-          onClick: () => router.push(`/workspace/${workspace.id}`)
-        })
-      })
-
-      setWorkSpaces([
-        {
-          id: 0,
-          description: "Click to create a workspace.",
-          name: "Create workspace.",
-          onClick: () => setModal(!modal),
-        },
-        ...workspaces
-      ]);
-    };
-
     getUserWorkSpaces();
   }, []);
 
   return (
     <div className={styles.container}>
       <Modal modal={modal} setModal={setModal}>
-        <NewWorkSpaceModal />
+        <NewWorkSpaceModal
+          onSuccess={() => {
+            setModal(!modal);
+            toast.success("Workspace created successfully!");
+            getUserWorkSpaces();
+          }}
+        />
       </Modal>
       <h1>Your WorkSpaces:</h1>
       <hr />

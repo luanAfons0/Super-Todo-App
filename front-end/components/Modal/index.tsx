@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import styles from "./styles.module.scss";
 import { useEffect } from "react";
@@ -22,11 +22,13 @@ export default function Modal({ children, setModal, modal }: ModalType) {
     <>
       {modal && (
         <>
-          <div className={styles.container} onClick={() => setModal(!modal)}></div>
+          <div
+            className={styles.container}
+            onClick={() => setModal(!modal)}
+          ></div>
           <div className={styles.children}>{children}</div>
         </>
       )}
-
     </>
   );
 }

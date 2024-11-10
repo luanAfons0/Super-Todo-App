@@ -17,9 +17,15 @@ export default function WorkSpaceCard({
 }: TypeWorkSpaceCard) {
   return (
     <ToolTip tootTipText={description}>
-      <div className={styles.container} onClick={() => onClick()}>
-        <CirclePlus size={100} />
-      </div>
+      {id === 0 ? (
+        <div className={styles.container} onClick={() => onClick()}>
+          <CirclePlus size={100} />
+        </div>
+      ) : (
+        <div className={styles.container} onClick={() => onClick()}>
+          <h3>{name}</h3>
+        </div>
+      )}
     </ToolTip>
   );
 }
