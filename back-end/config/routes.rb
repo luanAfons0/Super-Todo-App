@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
+  # Acount related
   resources  :account, only: [:create, :show, :update]
 
+  # Workspaces related
+  get "account/:id/workspaces" => "workspace#get_related_workspaces"
+  post "account/:id/workspaces" => "workspace#create_workspace"
+
+  # Auth
   post "auth/login" => "auth#login"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # Healthcheck
   get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
-  # root "posts#index"
 end
