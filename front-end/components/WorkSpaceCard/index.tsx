@@ -2,11 +2,12 @@
 
 import UpdateWorkspaceModal from "../UpdateWorkspaceModal";
 import DeleteWorkspaceModal from "../DeleteWorkspaceModal";
+import { WorkspacesContext } from "@/app/account/page";
 import { PencilRuler, Trash2 } from "lucide-react";
+import { useContext, useState } from "react";
 import styles from "./styles.module.scss";
 import { CirclePlus } from "lucide-react";
 import ToolTip from "../ToolTip";
-import { useState } from "react";
 import Modal from "../Modal";
 
 export type TypeWorkSpaceCard = {
@@ -24,15 +25,16 @@ export default function WorkSpaceCard({
 }: TypeWorkSpaceCard) {
   const [updateModal, setUpdateModal] = useState<boolean>(false);
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
+  const { setReloadWorkSpaces } = useContext(WorkspacesContext)
 
   const onUpdate = () => {
     setUpdateModal(!updateModal);
-    window.location.reload();
+    setReloadWorkSpaces(true);
   };
 
   const onDelete = () => {
     setUpdateModal(!updateModal);
-    window.location.reload();
+    setReloadWorkSpaces(true);
   };
 
   return (

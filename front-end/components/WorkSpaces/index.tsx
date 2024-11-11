@@ -2,14 +2,15 @@
 
 import WorkSpaceCard, { TypeWorkSpaceCard } from "../WorkSpaceCard";
 import { getFromLocalStorage } from "@/utils/localStorage";
+import { useContext, useEffect, useState } from "react";
+import { WorkspacesContext } from "@/app/account/page";
 import NewWorkSpaceModal from "../NewWorkSpaceModal";
 import LoadingSpinner from "../LoadingSpinner";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./styles.module.scss";
 import useServer from "@/hook/userServer";
-import Modal from "../Modal";
-import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import Modal from "../Modal";
 
 export type Workspace = {
   id: number;
@@ -19,12 +20,20 @@ export type Workspace = {
 };
 
 export default function WorkSpaces() {
+  const { reloadWorkSpaces, setReloadWorkSpaces } = useContext(WorkspacesContext)
   const [createWorkspaceModal, setCreateWorkspaceModal] =
     useState<boolean>(false);
   const [workSpaces, setWorkSpaces] = useState<TypeWorkSpaceCard[]>([]);
   const account = getFromLocalStorage({ key: "account" });
   const { fetchServer, loading } = useServer();
   const router = useRouter();
+
+  useEffect(() => {
+    if (reloadWorkSpaces) {
+      getUserWorkSpaces()
+      setReloadWorkSpaces(false)
+    }
+  }, [reloadWorkSpaces])
 
   const getUserWorkSpaces = async () => {
     const response = await fetchServer({
@@ -63,7 +72,7 @@ export default function WorkSpaces() {
           onSuccess={() => {
             setCreateWorkspaceModal(!createWorkspaceModal);
             toast.success("Workspace created successfully!");
-            getUserWorkSpaces();
+            setReloadWorkSpaces(true)
           }}
         />
       </Modal>
