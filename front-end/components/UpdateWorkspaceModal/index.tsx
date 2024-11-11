@@ -8,15 +8,19 @@ import Button from "../Button";
 import Input from "../Input";
 
 export default function UpdateWorkspaceModal({
-  onSuccess,
+  initialDescription,
   workspaceId,
+  initialName,
+  onSuccess,
 }: {
+  initialDescription: string;
   onSuccess: Function;
   workspaceId: Number;
+  initialName: string;
 }) {
+  const [description, setDescription] = useState<string>(initialDescription);
   const account = getFromLocalStorage({ key: "account" });
-  const [description, setDescription] = useState("");
-  const [name, setName] = useState("");
+  const [name, setName] = useState<string>(initialName);
   const { fetchServer } = useServer();
 
   const updateWorkspace = async () => {

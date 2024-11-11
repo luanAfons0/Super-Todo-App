@@ -38,7 +38,12 @@ export default function WorkSpaceCard({
   return (
     <ToolTip tootTipText={description}>
       <Modal modal={updateModal} setModal={setUpdateModal}>
-        <UpdateWorkspaceModal onSuccess={onUpdate} workspaceId={id} />
+        <UpdateWorkspaceModal
+          onSuccess={onUpdate}
+          workspaceId={id}
+          initialName={name}
+          initialDescription={description}
+        />
       </Modal>
       <Modal modal={deleteModal} setModal={setDeleteModal}>
         <DeleteWorkspaceModal onSuccess={onDelete} workspaceId={id} />
