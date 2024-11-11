@@ -7,7 +7,7 @@ import {
 } from "@/utils/localStorage";
 import { basicEmailValidation, validatePassword } from "@/utils/validations";
 import LoadingSpinner from "../LoadingSpinner";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import useServer from "@/hook/userServer";
 import styles from "./styles.module.scss";
@@ -23,7 +23,7 @@ type Account = {
   id: Number;
 };
 
-export default function UserInfos() {
+export default memo(function UserInfos() {
   const account = getFromLocalStorage({ key: "account" });
 
   const [firstName, setFirstName] = useState(account?.first_name);
@@ -117,4 +117,4 @@ export default function UserInfos() {
       </div>
     </div>
   );
-}
+})
