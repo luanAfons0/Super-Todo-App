@@ -16,6 +16,8 @@ export default function Header() {
     } else {
       document.body.classList.remove(styles.MobileOpen);
     }
+
+    return () => document.body.classList.remove(styles.MobileOpen);
   }, [mobileMenu]);
 
   const handleClickOutside = (event: any) => {

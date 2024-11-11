@@ -8,11 +8,11 @@ import { useRouter } from "next/navigation";
 import styles from "./styles.module.scss";
 import useServer from "@/hook/userServer";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { memo, useState } from "react";
 import Button from "../Button";
 import Input from "../Input";
 
-export default function LoginBox() {
+export default memo(function LoginBox() {
   const { fetchServer, loading } = useServer();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -80,4 +80,4 @@ export default function LoginBox() {
       </div>
     </div>
   );
-}
+})

@@ -1,0 +1,19 @@
+.container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--ivory);
+    top: 5%;
+    left: 2%;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition-duration: 400ms;
+    border: 1px solid;
+
+    &:hover {
+        scale: 1.3;
+    }
+}
