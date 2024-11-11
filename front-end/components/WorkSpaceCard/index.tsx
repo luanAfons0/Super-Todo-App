@@ -26,16 +26,16 @@ export default function WorkSpaceCard({
 }: TypeWorkSpaceCard) {
   const [updateModal, setUpdateModal] = useState<boolean>(false);
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
-  const { setReloadWorkSpaces } = useContext(WorkspacesContext)
+  const { setReloadWorkSpaces } = useContext(WorkspacesContext);
 
   const onUpdate = () => {
-    toast.success("Workspace updated successfully!")
+    toast.success("Workspace updated successfully!");
     setUpdateModal(!updateModal);
     setReloadWorkSpaces(true);
   };
 
   const onDelete = () => {
-    toast.success("Workspace deleted successfully!")
+    toast.success("Workspace deleted successfully!");
     setUpdateModal(!updateModal);
     setReloadWorkSpaces(true);
   };

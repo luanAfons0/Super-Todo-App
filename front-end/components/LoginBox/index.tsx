@@ -80,4 +80,4 @@ export default memo(function LoginBox() {
       </div>
     </div>
   );
-})
+});

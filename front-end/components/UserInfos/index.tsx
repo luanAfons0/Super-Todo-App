@@ -117,4 +117,4 @@ export default memo(function UserInfos() {
       </div>
     </div>
   );
-})
+});

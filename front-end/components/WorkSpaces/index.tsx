@@ -20,7 +20,8 @@ export type Workspace = {
 };
 
 export default function WorkSpaces() {
-  const { reloadWorkSpaces, setReloadWorkSpaces } = useContext(WorkspacesContext)
+  const { reloadWorkSpaces, setReloadWorkSpaces } =
+    useContext(WorkspacesContext);
   const [createWorkspaceModal, setCreateWorkspaceModal] =
     useState<boolean>(false);
   const [workSpaces, setWorkSpaces] = useState<TypeWorkSpaceCard[]>([]);
@@ -30,10 +31,10 @@ export default function WorkSpaces() {
 
   useEffect(() => {
     if (reloadWorkSpaces) {
-      getUserWorkSpaces()
-      setReloadWorkSpaces(false)
+      getUserWorkSpaces();
+      setReloadWorkSpaces(false);
     }
-  }, [reloadWorkSpaces])
+  }, [reloadWorkSpaces]);
 
   const getUserWorkSpaces = async () => {
     const response = await fetchServer({
@@ -72,7 +73,7 @@ export default function WorkSpaces() {
           onSuccess={() => {
             setCreateWorkspaceModal(!createWorkspaceModal);
             toast.success("Workspace created successfully!");
-            setReloadWorkSpaces(true)
+            setReloadWorkSpaces(true);
           }}
         />
       </Modal>
