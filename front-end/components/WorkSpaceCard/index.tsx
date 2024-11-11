@@ -9,6 +9,7 @@ import styles from "./styles.module.scss";
 import { CirclePlus } from "lucide-react";
 import ToolTip from "../ToolTip";
 import Modal from "../Modal";
+import { toast } from "react-toastify";
 
 export type TypeWorkSpaceCard = {
   description: string;
@@ -28,11 +29,13 @@ export default function WorkSpaceCard({
   const { setReloadWorkSpaces } = useContext(WorkspacesContext)
 
   const onUpdate = () => {
+    toast.success("Workspace updated successfully!")
     setUpdateModal(!updateModal);
     setReloadWorkSpaces(true);
   };
 
   const onDelete = () => {
+    toast.success("Workspace deleted successfully!")
     setUpdateModal(!updateModal);
     setReloadWorkSpaces(true);
   };
