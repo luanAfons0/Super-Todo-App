@@ -3,7 +3,7 @@
 import WorkSpaceCard, { TypeWorkSpaceCard } from "../WorkSpaceCard";
 import { getFromLocalStorage } from "@/utils/localStorage";
 import { useContext, useEffect, useState } from "react";
-import { WorkspacesContext } from "@/app/account/page";
+import { WorkspacesContext } from "../WorkspacesList";
 import NewWorkSpaceModal from "../NewWorkSpaceModal";
 import LoadingSpinner from "../LoadingSpinner";
 import { useRouter } from "next/navigation";
@@ -83,10 +83,10 @@ export default function WorkSpaces() {
         {workSpaces.map((item, index) => (
           <WorkSpaceCard
             description={item.description}
-            id={item.id}
-            name={item.name}
-            key={index}
             onClick={item.onClick}
+            name={item.name}
+            id={item.id}
+            key={index}
           />
         ))}
       </div>

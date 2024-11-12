@@ -2,7 +2,7 @@
 
 import UpdateWorkspaceModal from "../UpdateWorkspaceModal";
 import DeleteWorkspaceModal from "../DeleteWorkspaceModal";
-import { WorkspacesContext } from "@/app/account/page";
+import { WorkspacesContext } from "../WorkspacesList";
 import { PencilRuler, Trash2 } from "lucide-react";
 import { useContext, useState } from "react";
 import styles from "./styles.module.scss";
@@ -44,10 +44,10 @@ export default function WorkSpaceCard({
     <ToolTip tootTipText={description}>
       <Modal modal={updateModal} setModal={setUpdateModal}>
         <UpdateWorkspaceModal
-          onSuccess={onUpdate}
-          workspaceId={id}
-          initialName={name}
           initialDescription={description}
+          onSuccess={onUpdate}
+          initialName={name}
+          workspaceId={id}
         />
       </Modal>
       <Modal modal={deleteModal} setModal={setDeleteModal}>

@@ -1,6 +1,7 @@
 "use client";
 
 import FloatingBackButton from "@/components/FloatingBackButton";
+import WorkspacesTables from "@/components/WorkspacesTable";
 import Container from "@/components/Container";
 import { useRouter } from "next/navigation";
 
@@ -10,9 +11,7 @@ export default function LoginPage() {
   return (
     <Container>
       <FloatingBackButton backAction={() => router.push("/")} />
-      <div>
-        <h1>Teste</h1>
-      </div>
+      <WorkspacesTables />
     </Container>
   );
 }
