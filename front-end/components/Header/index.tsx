@@ -38,12 +38,12 @@ export default function Header() {
 
         <div>
           <ul className={styles.HeaderContent}>
-            <li>
+            {/* <li>
               <Link href={"/about-us"}>About Us</Link>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <Link href={"/contact"}>Contact</Link>
-            </li>
+            </li> */}
             <li>
               <Link href={"/account"}>Your Account</Link>
             </li>
