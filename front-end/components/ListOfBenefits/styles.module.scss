@@ -41,6 +41,11 @@
   text-align: center;
   margin: 1rem;
   gap: 1rem;
+
+  &:hover {
+    transition-duration: 0.5s;
+    scale: 1.3;
+  }
 }
 
 .container .benefits div svg {
