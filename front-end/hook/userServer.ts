@@ -1,6 +1,6 @@
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter } from "nextjs-toploader/app";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 type RequestObj = {
   method: "POST" | "GET" | "PATCH" | "PUT" | "DELETE";

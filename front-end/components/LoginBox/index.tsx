@@ -4,7 +4,7 @@ import { basicEmailValidation, validatePassword } from "@/utils/validations";
 import { saveInLocalStorage } from "@/utils/localStorage";
 import { User, LockKeyhole } from "lucide-react";
 import LoadingSpinner from "../LoadingSpinner";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import styles from "./styles.module.scss";
 import useServer from "@/hook/userServer";
 import { toast } from "react-toastify";

@@ -3,7 +3,7 @@
 import FloatingBackButton from "@/components/FloatingBackButton";
 import Container from "@/components/Container";
 import LoginBox from "@/components/LoginBox";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 
 export default function LoginPage() {
   const router = useRouter();

@@ -8,7 +8,7 @@ import {
 import { basicEmailValidation, validatePassword } from "@/utils/validations";
 import LoadingSpinner from "../LoadingSpinner";
 import { memo, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import useServer from "@/hook/userServer";
 import styles from "./styles.module.scss";
 import { toast } from "react-toastify";

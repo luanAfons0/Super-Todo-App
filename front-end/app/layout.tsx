@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.scss";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,8 +20,9 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={inter.className}>
-        {children}
+        <NextTopLoader color="#0d1717" />
         <ToastContainer />
+        {children}
       </body>
     </html>
   );

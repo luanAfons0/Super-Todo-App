@@ -6,7 +6,7 @@ import { getFromLocalStorage } from "@/utils/localStorage";
 import { WorkspacesContext } from "../WorkspacesList";
 import NewWorkSpaceModal from "../NewWorkSpaceModal";
 import LoadingSpinner from "../LoadingSpinner";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import styles from "./styles.module.scss";
 import useServer from "@/hook/userServer";
 import { toast } from "react-toastify";
