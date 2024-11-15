@@ -1,8 +1,8 @@
 "use client";
 
+import { useCallback, useContext, useEffect, useState } from "react";
 import WorkSpaceCard, { TypeWorkSpaceCard } from "../WorkSpaceCard";
 import { getFromLocalStorage } from "@/utils/localStorage";
-import { useContext, useEffect, useState } from "react";
 import { WorkspacesContext } from "../WorkspacesList";
 import NewWorkSpaceModal from "../NewWorkSpaceModal";
 import LoadingSpinner from "../LoadingSpinner";
@@ -29,14 +29,7 @@ export default function WorkSpaces() {
   const { fetchServer, loading } = useServer();
   const router = useRouter();
 
-  useEffect(() => {
-    if (reloadWorkSpaces) {
-      getUserWorkSpaces();
-      setReloadWorkSpaces(false);
-    }
-  }, [reloadWorkSpaces]);
-
-  const getUserWorkSpaces = async () => {
+  const getUserWorkSpaces = useCallback(async () => {
     const response = await fetchServer({
       method: "GET",
       headers: { Authorization: `Bearer ${account?.token}` },
@@ -59,11 +52,18 @@ export default function WorkSpaces() {
       },
       ...workspaces,
     ]);
-  };
+  }, []);
 
   useEffect(() => {
     getUserWorkSpaces();
   }, []);
+
+  useEffect(() => {
+    if (reloadWorkSpaces) {
+      getUserWorkSpaces();
+      setReloadWorkSpaces(false);
+    }
+  }, [reloadWorkSpaces, getUserWorkSpaces]);
 
   return (
     <div className={styles.container}>

@@ -10,7 +10,7 @@ export default function LoginPage() {
 
   return (
     <Container>
-      <FloatingBackButton backAction={() => router.push("/")} />
+      <FloatingBackButton backAction={() => router.push("/account")} />
       <WorkspacesTables />
     </Container>
   );
