@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   patch "account/:account_id/workspaces/:worspace_id" => "workspace#update_workspace"
   delete "account/:account_id/workspaces/:worspace_id" => "workspace#destroy_workspace"
 
+  # Columns related
+  get "account/:account_id/workspaces/:workspace_id" => "columns#get_all_columns"
+
   # Auth
   post "auth/login" => "auth#login"
 

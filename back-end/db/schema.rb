@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_10_164536) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_21_004853) do
   create_table "accounts", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -18,6 +18,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_10_164536) do
     t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "columns", force: :cascade do |t|
+    t.string "name"
+    t.integer "workspace_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["workspace_id"], name: "index_columns_on_workspace_id"
   end
 
   create_table "workspaces", force: :cascade do |t|

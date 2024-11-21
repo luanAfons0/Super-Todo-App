@@ -1,6 +1,13 @@
 .container {
     padding: 1rem;
-    width: 80%;
+    width: 90%;
     background-color: var(--ivory);
     border-radius: 12px;
+
+    .list {
+        display: flex;
+        justify-content: flex-start;
+        overflow-x: auto;
+        gap: 1rem;
+    }
 }
