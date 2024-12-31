@@ -2,10 +2,17 @@ import { Grip, Pencil } from "lucide-react";
 import styles from "./styles.module.scss";
 
 type Column = {
-  column: any;
+  position: number;
+  color: string;
+  name: string;
+  id: number;
 };
 
-export default function Column({ column }: Column) {
+type ColumnProps = {
+  column: Column;
+};
+
+export default function Column({ column }: ColumnProps) {
   console.log(column);
 
   return (
