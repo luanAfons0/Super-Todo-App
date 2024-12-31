@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { IdCard } from "lucide-react";
 import { useState } from "react";
 import Button from "../Button";
+import Select from "../Select";
 import Input from "../Input";
 
 type CreateColumnModal = {
@@ -16,6 +17,7 @@ type CreateColumnModal = {
 
 export default function CreateColumnModal({ closeModal }: CreateColumnModal) {
   const account = getFromLocalStorage({ key: "account" });
+  const [color, setColor] = useState({ value: "green", label: "Green" });
   const [name, setName] = useState("");
   const { fetchServer } = useServer();
   const { id } = useParams();
@@ -37,8 +39,9 @@ export default function CreateColumnModal({ closeModal }: CreateColumnModal) {
         Authorization: `Bearer ${account?.token}`,
       },
       body: {
-        name: name,
+        color: color.value,
         workspace_id: id,
+        name: name,
       },
       successMessage: "Column created successyfuly",
       successAction: closeModal,
@@ -54,6 +57,14 @@ export default function CreateColumnModal({ closeModal }: CreateColumnModal) {
     }
   };
 
+  const colors = [
+    { label: "Red", value: "red" },
+    { label: "Green", value: "green" },
+    { label: "Blue", value: "blue" },
+    { label: "Purple", value: "purple" },
+    { label: "Yellow", value: "yellow" },
+  ];
+
   return (
     <div className={styles.container}>
       <div className={styles.inputStyle}>
@@ -64,6 +75,16 @@ export default function CreateColumnModal({ closeModal }: CreateColumnModal) {
           setValue={setName}
           startIcon={<IdCard />}
         />
+      </div>
+      <div className={styles.inputStyle}>
+        <h1>Column color:</h1>
+        <div className={styles.select}>
+          <div
+            className={styles.preview}
+            style={{ backgroundColor: color.value }}
+          />
+          <Select value={color.label} setValue={setColor} options={colors} />
+        </div>
       </div>
       <div className={styles.buttonRow}>
         <Button
