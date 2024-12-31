@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_21_004853) do
 
   create_table "columns", force: :cascade do |t|
     t.string "name"
+    t.string "color"
     t.integer "workspace_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

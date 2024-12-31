@@ -18,6 +18,6 @@ class ColumnsController < ApplicationController
     private
 
     def columns_params
-        params.permit(:name, :workspace_id)
+        params.permit(:name, :workspace_id, :color)
     end
 end
