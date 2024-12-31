@@ -1,13 +1,19 @@
 .container {
-    padding: 1rem;
-    width: 90%;
-    background-color: var(--ivory);
-    border-radius: 12px;
+  padding: 1rem;
+  width: 90%;
+  background-color: var(--ivory);
+  border-radius: 12px;
 
-    .list {
-        display: flex;
-        justify-content: flex-start;
-        overflow-x: auto;
-        gap: 1rem;
-    }
+  .section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .list {
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 1rem;
+  }
 }

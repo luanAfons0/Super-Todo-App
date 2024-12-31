@@ -1,10 +1,16 @@
 .container {
-    border-radius: 12px;
-    border: solid 1px var(--chinese-black);
-    padding: 1rem;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    flex: none;
+  border-radius: 12px;
+  border: solid 1px var(--chinese-black);
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+
+  p {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
 }

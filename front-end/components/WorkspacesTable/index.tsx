@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { getFromLocalStorage } from "@/utils/localStorage";
 import { useCallback, useEffect, useState } from "react";
@@ -9,7 +9,7 @@ import useServer from "@/hook/userServer";
 
 type Column = {
   name: string;
-}
+};
 
 export default function WorkspacesTables() {
   const account = getFromLocalStorage({ key: "account" });
@@ -22,22 +22,31 @@ export default function WorkspacesTables() {
       method: "GET",
       route: `/account/${account.id}/workspaces/${id}`,
       headers: {
-        Authorization: `Bearer ${account.token}`
-      }
-    })
-    setColumns(response)
-  }, [id])
+        Authorization: `Bearer ${account.token}`,
+      },
+    });
+    setColumns(response.columns);
+  }, [id]);
 
   useEffect(() => {
-    getUserColumns()
-  }, [getUserColumns])
+    getUserColumns();
+  }, [getUserColumns]);
 
   return (
     <div className={styles.container}>
-      <h1>Workspace:</h1>
+      <div className={styles.section}>
+        <h1>Workspace:</h1>
+        <AddColumnCard />
+      </div>
       <hr />
       <div className={styles.list}>
-        <AddColumnCard />
+        {columns.map((column) => {
+          return (
+            <div>
+              <h1>{column.name}</h1>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
