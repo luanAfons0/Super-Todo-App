@@ -6,6 +6,7 @@ import AddColumnCard from "../AddColumnCard";
 import { useParams } from "next/navigation";
 import styles from "./styles.module.scss";
 import useServer from "@/hook/userServer";
+import Column from "../Column";
 
 type Column = {
   name: string;
@@ -55,13 +56,9 @@ export default function WorkspacesTables() {
         </div>
         <hr />
         <div className={styles.list}>
-          {columns.map((column) => {
-            return (
-              <div>
-                <h1>{column.name}</h1>
-              </div>
-            );
-          })}
+          {columns.map((column) => (
+            <Column column={column} />
+          ))}
         </div>
       </div>
     </ColumnContext.Provider>
