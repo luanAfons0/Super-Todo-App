@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border: 1px solid var(--chinese-black);
 
   @media (max-width: 768px) {
     width: 100%;
@@ -20,15 +21,13 @@
   }
 
   .row {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
 
-  a {
-    margin: 1rem 0 0 0;
+    a {
+      margin: 1rem 0 0 0;
+    }
   }
 }
-}
-
-
