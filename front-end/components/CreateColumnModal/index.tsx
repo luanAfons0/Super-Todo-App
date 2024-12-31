@@ -1,12 +1,13 @@
 "use client";
 
 import { getFromLocalStorage } from "@/utils/localStorage";
+import { ColumnContext } from "../WorkspacesTable";
+import { useContext, useState } from "react";
 import { useParams } from "next/navigation";
 import useServer from "@/hook/userServer";
 import styles from "./styles.module.scss";
 import { toast } from "react-toastify";
 import { IdCard } from "lucide-react";
-import { useState } from "react";
 import Button from "../Button";
 import Select from "../Select";
 import Input from "../Input";
@@ -16,6 +17,7 @@ type CreateColumnModal = {
 };
 
 export default function CreateColumnModal({ closeModal }: CreateColumnModal) {
+  const { updateColumns, setUpdateColumns } = useContext(ColumnContext);
   const account = getFromLocalStorage({ key: "account" });
   const [color, setColor] = useState({ value: "green", label: "Green" });
   const [name, setName] = useState("");
@@ -48,10 +50,15 @@ export default function CreateColumnModal({ closeModal }: CreateColumnModal) {
     });
   };
 
+  const reloadColumns = () => {
+    setUpdateColumns(!updateColumns);
+  };
+
   const submit = () => {
     try {
       validateName();
       createColumn();
+      reloadColumns();
     } catch (error: any) {
       toast.warning(error.message);
     }

@@ -1,7 +1,7 @@
 "use client";
 
+import { createContext, useCallback, useEffect, useState } from "react";
 import { getFromLocalStorage } from "@/utils/localStorage";
-import { useCallback, useEffect, useState } from "react";
 import AddColumnCard from "../AddColumnCard";
 import { useParams } from "next/navigation";
 import styles from "./styles.module.scss";
@@ -11,7 +11,18 @@ type Column = {
   name: string;
 };
 
+type CreteColumnContext = {
+  updateColumns: boolean;
+  setUpdateColumns: Function;
+};
+
+export const ColumnContext = createContext<CreteColumnContext>({
+  updateColumns: false,
+  setUpdateColumns: () => {},
+});
+
 export default function WorkspacesTables() {
+  const [updateColumns, setUpdateColumns] = useState<boolean>(false);
   const account = getFromLocalStorage({ key: "account" });
   const [columns, setColumns] = useState<Column[]>([]);
   const { fetchServer } = useServer();
@@ -30,24 +41,29 @@ export default function WorkspacesTables() {
 
   useEffect(() => {
     getUserColumns();
-  }, [getUserColumns]);
+    if (updateColumns) {
+      setUpdateColumns(!updateColumns);
+    }
+  }, [getUserColumns, updateColumns]);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.section}>
-        <h1>Workspace:</h1>
-        <AddColumnCard />
+    <ColumnContext.Provider value={{ updateColumns, setUpdateColumns }}>
+      <div className={styles.container}>
+        <div className={styles.section}>
+          <h1>Workspace:</h1>
+          <AddColumnCard />
+        </div>
+        <hr />
+        <div className={styles.list}>
+          {columns.map((column) => {
+            return (
+              <div>
+                <h1>{column.name}</h1>
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <hr />
-      <div className={styles.list}>
-        {columns.map((column) => {
-          return (
-            <div>
-              <h1>{column.name}</h1>
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    </ColumnContext.Provider>
   );
 }
