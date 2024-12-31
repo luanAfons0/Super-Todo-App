@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete "account/:account_id/workspaces/:worspace_id" => "workspace#destroy_workspace"
 
   # Columns related
+  post "account/:account_id/workspaces/:workspace_id" => "columns#create_column"
   get "account/:account_id/workspaces/:workspace_id" => "columns#get_all_columns"
 
   # Auth
