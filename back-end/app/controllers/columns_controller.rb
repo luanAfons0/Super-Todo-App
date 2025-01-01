@@ -15,9 +15,19 @@ class ColumnsController < ApplicationController
         end
     end
 
+    def update_positions
+        @columns = []
+        for column in params[:columns] do
+            @column = Column.where(id: column[:id]).update(position: column[:position])
+            @columns.push(@column)
+        end
+
+        render json: { message: @columns.as_json }
+    end
+
     private
 
     def columns_params
-        params.permit(:name, :workspace_id, :color)
+        params.permit(:name, :workspace_id, :color, :position)
     end
 end

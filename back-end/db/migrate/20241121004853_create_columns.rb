@@ -3,6 +3,7 @@ class CreateColumns < ActiveRecord::Migration[7.1]
     create_table :columns do |t|
       t.string :name
       t.string :color
+      t.integer :position
       t.belongs_to :workspace
 
       t.timestamps
