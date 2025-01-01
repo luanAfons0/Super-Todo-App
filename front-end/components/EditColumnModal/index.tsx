@@ -1,28 +1,65 @@
 "use client";
 
-import { colors } from "../CreateColumnModal";
+import { colors, validateName } from "../CreateColumnModal";
+import { getFromLocalStorage } from "@/utils/localStorage";
+import { ColumnContext } from "../WorkspacesTable";
+import { useContext, useState } from "react";
+import { useParams } from "next/navigation";
 import styles from "./styles.module.scss";
-import { useState } from "react";
+import useServer from "@/hook/userServer";
+import { toast } from "react-toastify";
 import Select from "../Select";
 import Button from "../Button";
 import Input from "../Input";
 
 type EditColumnModal = {
+  closeModal: Function;
   columnName: string;
+  column_id: number;
   columnColor: { value: string; label: string };
 };
 
 export default function EditColumnModal({
   columnColor,
   columnName,
+  closeModal,
+  column_id,
 }: EditColumnModal) {
-  console.log(columnColor);
-
+  const { updateColumns, setUpdateColumns } = useContext(ColumnContext);
+  const account = getFromLocalStorage({ key: "account" });
   const [color, setColor] = useState(columnColor);
   const [name, setName] = useState(columnName);
+  const { fetchServer } = useServer();
+  const { id } = useParams();
+
+  const updateColumn = async () => {
+    await fetchServer({
+      method: "PATCH",
+      route: `/account/${account?.id}/workspaces/${id}/column/${column_id}`,
+      headers: {
+        Authorization: `Bearer ${account?.token}`,
+      },
+      body: {
+        color: color.value,
+        name: name,
+      },
+      successMessage: "Column updated successfully",
+      successAction: closeModal,
+    });
+  };
+
+  const reloadColumns = () => {
+    setUpdateColumns(!updateColumns);
+  };
 
   const submit = () => {
-    console.log("updated column infos");
+    try {
+      validateName(name);
+      updateColumn();
+      reloadColumns();
+    } catch (error: any) {
+      toast.warning(error.message);
+    }
   };
 
   return (

@@ -25,6 +25,15 @@ type CreateColumnModal = {
   lastPosition: number;
 };
 
+export const validateName = (name: string) => {
+  if (!name || name == "") {
+    throw new Error("Column name cant be blank!");
+  }
+  if (name.length > 15) {
+    throw new Error("Column name is too long!");
+  }
+};
+
 export default function CreateColumnModal({
   lastPosition,
   closeModal,
@@ -35,15 +44,6 @@ export default function CreateColumnModal({
   const [name, setName] = useState("");
   const { fetchServer } = useServer();
   const { id } = useParams();
-
-  const validateName = () => {
-    if (!name || name == "") {
-      throw new Error("Column name cant be blank!");
-    }
-    if (name.length > 15) {
-      throw new Error("Column name is too long!");
-    }
-  };
 
   const createColumn = async () => {
     await fetchServer({
@@ -58,7 +58,7 @@ export default function CreateColumnModal({
         workspace_id: id,
         name: name,
       },
-      successMessage: "Column created successyfuly",
+      successMessage: "Column created successfully",
       successAction: closeModal,
     });
   };
@@ -69,7 +69,7 @@ export default function CreateColumnModal({
 
   const submit = () => {
     try {
-      validateName();
+      validateName(name);
       createColumn();
       reloadColumns();
     } catch (error: any) {

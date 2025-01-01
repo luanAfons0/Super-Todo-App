@@ -1,5 +1,6 @@
 .container {
   min-width: 18vw;
+  max-width: 18vw;
   border-radius: 12px;
   border: 1px solid var(--chinese-black);
   padding: 1rem;
@@ -7,6 +8,12 @@
   .columnName {
     display: flex;
     justify-content: space-between;
+
+    h2 {
+      max-width: 10vw;
+      overflow: hidden;
+      width: fit-content;
+    }
 
     .iconRow {
       display: flex;

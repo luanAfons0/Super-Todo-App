@@ -25,6 +25,8 @@ export default function Column({ column }: ColumnProps) {
     <>
       <Modal modal={editColumnModal} setModal={setEditColumnModal}>
         <EditColumnModal
+          column_id={column.id}
+          closeModal={() => setEditColumnModal(!editColumnModal)}
           columnName={column.name}
           columnColor={
             colors.find((color) => color.value == column.color) ?? {
