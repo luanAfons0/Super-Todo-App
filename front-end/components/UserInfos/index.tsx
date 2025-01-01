@@ -1,10 +1,5 @@
 "use client";
 
-import {
-  deleteFromLocalStorage,
-  getFromLocalStorage,
-  saveInLocalStorage,
-} from "@/utils/localStorage";
 import { basicEmailValidation, validatePassword } from "@/utils/validations";
 import LoadingSpinner from "../LoadingSpinner";
 import { memo, useEffect, useState } from "react";
@@ -14,6 +9,11 @@ import styles from "./styles.module.scss";
 import { toast } from "react-toastify";
 import Button from "../Button";
 import Input from "../Input";
+import {
+  deleteFromLocalStorage,
+  getFromLocalStorage,
+  saveInLocalStorage,
+} from "@/utils/localStorage";
 
 type Account = {
   first_name: string;

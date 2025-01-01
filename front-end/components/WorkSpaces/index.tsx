@@ -39,7 +39,7 @@ export default function WorkSpaces() {
     const workspaces = response.workspaces.map((workspace: Workspace) => {
       return {
         ...workspace,
-        onClick: () => router.push(`/workspace/${workspace.id}`),
+        onClick: () => router.push(`/workspace/${workspace?.id}`),
       };
     });
 
@@ -85,7 +85,7 @@ export default function WorkSpaces() {
             description={item.description}
             onClick={item.onClick}
             name={item.name}
-            id={item.id}
+            id={item?.id}
             key={index}
           />
         ))}

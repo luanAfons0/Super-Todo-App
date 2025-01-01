@@ -1,5 +1,5 @@
-import styles from "./styles.module.scss";
 import { instagramIcon, facebookIcon, whatsappIcon } from "../icons/index";
+import styles from "./styles.module.scss";
 
 export default function Footer() {
   return (

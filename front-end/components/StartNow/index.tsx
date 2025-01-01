@@ -1,5 +1,5 @@
-import Button from "../Button";
 import styles from "./styles.module.scss";
+import Button from "../Button";
 
 export default function StartNow() {
   return (

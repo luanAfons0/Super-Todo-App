@@ -4,6 +4,7 @@ import { createContext, useCallback, useEffect, useState } from "react";
 import { getFromLocalStorage } from "@/utils/localStorage";
 import { ReactSortable } from "react-sortablejs";
 import Column, { ColumnType } from "../Column";
+import LoadingSpinner from "../LoadingSpinner";
 import AddColumnCard from "../AddColumnCard";
 import { useParams } from "next/navigation";
 import styles from "./styles.module.scss";
@@ -35,9 +36,9 @@ export default function WorkspacesTables() {
   const getUserColumns = useCallback(async () => {
     const response = await fetchServer({
       method: "GET",
-      route: `/account/${account.id}/workspaces/${id}`,
+      route: `/account/${account?.id}/workspaces/${id}`,
       headers: {
-        Authorization: `Bearer ${account.token}`,
+        Authorization: `Bearer ${account?.token}`,
       },
     });
     const sortedItems = response.columns.sort(
@@ -50,9 +51,9 @@ export default function WorkspacesTables() {
   const updateColumnsPosition = useCallback(async (newList: Column[]) => {
     await fetchServer({
       method: "PATCH",
-      route: `/account/${account.id}/workspaces/positions/${id}`,
+      route: `/account/${account?.id}/workspaces/positions/${id}`,
       headers: {
-        Authorization: `Bearer ${account.token}`,
+        Authorization: `Bearer ${account?.token}`,
       },
       body: {
         columns: newList,

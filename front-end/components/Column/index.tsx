@@ -1,3 +1,5 @@
+"use client";
+
 import { Grip, Pencil } from "lucide-react";
 import styles from "./styles.module.scss";
 

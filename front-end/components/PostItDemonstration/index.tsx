@@ -1,7 +1,8 @@
 "use client";
-import Button from "../Button";
+
 import styles from "./styles.module.scss";
 import { useState } from "react";
+import Button from "../Button";
 
 export default function PostItDemonstration() {
   const [randomColor, setRandomColor] = useState("#eee30c");
