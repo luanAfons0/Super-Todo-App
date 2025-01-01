@@ -82,6 +82,8 @@ export default function WorkspacesTables() {
           className={styles.list}
           list={columns}
           forceAutoScrollFallback
+          animation={300}
+          handle=".drag"
           setList={(list) => {
             const newList = list.map((column, index) => {
               return { ...column, position: index + 1 };

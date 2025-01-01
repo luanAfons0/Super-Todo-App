@@ -8,10 +8,12 @@ type InputProps = {
   startIcon?: ReactNode;
   setValue: Function;
   value: string;
+  placeHolder?: string;
 };
 
 export default function Input({
   startIcon = undefined,
+  placeHolder = "",
   setValue,
   value,
   type,
@@ -23,6 +25,7 @@ export default function Input({
         className={styles.input}
         type={type}
         value={value}
+        placeholder={placeHolder}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setValue(e.target.value)
         }

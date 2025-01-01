@@ -12,6 +12,14 @@ import Button from "../Button";
 import Select from "../Select";
 import Input from "../Input";
 
+export const colors = [
+  { label: "Red", value: "red" },
+  { label: "Green", value: "green" },
+  { label: "Blue", value: "blue" },
+  { label: "Purple", value: "purple" },
+  { label: "Yellow", value: "yellow" },
+];
+
 type CreateColumnModal = {
   closeModal: Function;
   lastPosition: number;
@@ -68,14 +76,6 @@ export default function CreateColumnModal({
       toast.warning(error.message);
     }
   };
-
-  const colors = [
-    { label: "Red", value: "red" },
-    { label: "Green", value: "green" },
-    { label: "Blue", value: "blue" },
-    { label: "Purple", value: "purple" },
-    { label: "Yellow", value: "yellow" },
-  ];
 
   return (
     <div className={styles.container}>
