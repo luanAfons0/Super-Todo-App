@@ -22,7 +22,13 @@ class ColumnsController < ApplicationController
             @columns.push(@column)
         end
 
-        render json: { message: @columns.as_json }
+        render json: { message: @columns.as_json }, status: :ok
+    end
+
+    def update_column_info
+        @column = Column.where(id: params[:column_id]).update(name: params[:name], color: params[:color])
+
+        render json: { column: @column.as_json }, status: :ok
     end
 
     private

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post "account/:account_id/workspaces/:workspace_id" => "columns#create_column"
   get "account/:account_id/workspaces/:workspace_id" => "columns#get_all_columns"
   patch "account/:account_id/workspaces/positions/:workspace_id" => "columns#update_positions"
+  patch "account/:account_id/workspaces/:workspace_id/column/:column_id" => "columns#update_column_info"
 
   # Auth
   post "auth/login" => "auth#login"
