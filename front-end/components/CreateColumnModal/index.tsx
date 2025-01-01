@@ -14,9 +14,13 @@ import Input from "../Input";
 
 type CreateColumnModal = {
   closeModal: Function;
+  lastPosition: number;
 };
 
-export default function CreateColumnModal({ closeModal }: CreateColumnModal) {
+export default function CreateColumnModal({
+  lastPosition,
+  closeModal,
+}: CreateColumnModal) {
   const { updateColumns, setUpdateColumns } = useContext(ColumnContext);
   const account = getFromLocalStorage({ key: "account" });
   const [color, setColor] = useState({ value: "green", label: "Green" });
@@ -41,6 +45,7 @@ export default function CreateColumnModal({ closeModal }: CreateColumnModal) {
         Authorization: `Bearer ${account?.token}`,
       },
       body: {
+        position: lastPosition + 1,
         color: color.value,
         workspace_id: id,
         name: name,

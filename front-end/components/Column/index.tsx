@@ -1,7 +1,7 @@
 import { Grip, Pencil } from "lucide-react";
 import styles from "./styles.module.scss";
 
-type Column = {
+export type ColumnType = {
   position: number;
   color: string;
   name: string;
@@ -9,12 +9,10 @@ type Column = {
 };
 
 type ColumnProps = {
-  column: Column;
+  column: ColumnType;
 };
 
 export default function Column({ column }: ColumnProps) {
-  console.log(column);
-
   return (
     <div className={styles.container} style={{ backgroundColor: column.color }}>
       <div>

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import styles from "./styles.module.scss";
+import { useState } from "react";
 
 type Option = {
   value: String;
@@ -25,8 +25,8 @@ export default function Select({ value, setValue, options }: Select) {
       <p>{value}</p>
       {showOptions && (
         <div className={styles.options}>
-          {options.map((option) => (
-            <div onClick={() => setValue(option)}>
+          {options.map((option, index) => (
+            <div key={`option-${index}`} onClick={() => setValue(option)}>
               <div className={styles.row}>
                 <div
                   className={styles.preview}
